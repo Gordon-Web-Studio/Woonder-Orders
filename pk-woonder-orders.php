@@ -16,7 +16,7 @@
  * Plugin Name:       Woonder Orders
  * Plugin URI:        https://poetkods.com/plugins/woonder-orders
  * Description:       A Plugin to can manage the WooCommerce Orders with super powers 💪
- * Version:           0.1.1
+ * Version:           1.0.0
  * Author:            David Gaitán
  * Author URI:        https://github.com/dgaitan
  * License:           GPL-2.0+
