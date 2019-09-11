@@ -42,6 +42,11 @@ class Pk_Woonder_Orders_Activator {
 	
 	}
 
+	/**
+	 * Message alert if the woocommerce doesn't exist.
+	 * 
+	 * @since 1.0.0
+	 */
 	public static function woocommerce_missing_wc_notice () {
 
 		echo '<div class="error"><p><strong>' . sprintf( esc_html__( 'Woonder Orders requires WooCommerce to be installed and active. You can download %s here.', 'pk-woonder-orders' ), '<a href="https://woocommerce.com/" target="_blank">WooCommerce</a>' ) . '</strong></p></div>';
