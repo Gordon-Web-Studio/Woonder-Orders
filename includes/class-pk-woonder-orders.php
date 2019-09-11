@@ -202,7 +202,7 @@ class Pk_Woonder_Orders {
 
 		$admin_navs = new Pk_Woonder_Orders_Admin_Menu( $this->get_plugin_name(), $this->get_version() );
 
-	    $this->loader->add_action( 'admin_menu', $admin_navs, 'index' );
+	    $this->loader->add_action( 'admin_menu', $admin_navs, 'pages' );
 	}
 
 	/**
