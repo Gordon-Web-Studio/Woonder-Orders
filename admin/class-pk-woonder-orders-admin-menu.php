@@ -124,8 +124,15 @@ class Pk_Woonder_Orders_Admin_Menu {
 	 * @since 1.0.0
 	 */
 	public function index_view() {
-		
+
 		$plugin_name = $this->plugin_name;
+
+		$orders = wc_get_orders( array(
+		    'limit' => 10,
+		    'orderby' => 'date',
+		    'order' => 'DESC'
+		) );
+
 		// Return the index view template
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'views/woonder-orders-index.php';
 	}
