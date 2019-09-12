@@ -1,28 +1,28 @@
 (function( $ ) {
-	'use strict';
+  'use strict';
 
-	var woonderOrders = new Vue({
-		el: '#pk-woonder-orders',
-		
-		data: {
+  var woonderOrders = new Vue({
+    el: '#pk-woonder-orders',
 
-		},
+    data: {
 
-		computed: {
+    },
 
-		},
+    computed: {
 
-		created: {
+    },
 
-		},
+    created: {
 
-		methods: {
+    },
 
-		},
+    methods: {
 
-		watch: {
-			
-		}
-	});
+    },
+
+    watch: {
+
+    }
+  });
 
 })( jQuery );

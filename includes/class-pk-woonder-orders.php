@@ -220,7 +220,7 @@ class Pk_Woonder_Orders {
 	 *
 	 * @since 	1.0.0
 	 * @access  private
-	 */	
+	 */
 	private function define_admin_navs() {
 
 		$admin_navs = new Pk_Woonder_Orders_Admin_Menu( $this->get_plugin_name(), $this->get_version() );

@@ -27,7 +27,7 @@
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
-	die;
+    die;
 }
 
 /**
@@ -42,8 +42,8 @@ define( 'PK_WOONDER_ORDERS_VERSION', '1.0.0' );
  * This action is documented in includes/class-pk-woonder-orders-activator.php
  */
 function activate_pk_woonder_orders() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-pk-woonder-orders-activator.php';
-	Pk_Woonder_Orders_Activator::activate();
+    require_once plugin_dir_path( __FILE__ ) . 'includes/class-pk-woonder-orders-activator.php';
+    Pk_Woonder_Orders_Activator::activate();
 }
 
 /**
@@ -51,8 +51,8 @@ function activate_pk_woonder_orders() {
  * This action is documented in includes/class-pk-woonder-orders-deactivator.php
  */
 function deactivate_pk_woonder_orders() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-pk-woonder-orders-deactivator.php';
-	Pk_Woonder_Orders_Deactivator::deactivate();
+    require_once plugin_dir_path( __FILE__ ) . 'includes/class-pk-woonder-orders-deactivator.php';
+    Pk_Woonder_Orders_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_pk_woonder_orders' );
@@ -75,8 +75,8 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-pk-woonder-orders.php';
  */
 function run_pk_woonder_orders() {
 
-	$plugin = new Pk_Woonder_Orders();
-	$plugin->run();
+    $plugin = new Pk_Woonder_Orders();
+    $plugin->run();
 
 }
 run_pk_woonder_orders();
