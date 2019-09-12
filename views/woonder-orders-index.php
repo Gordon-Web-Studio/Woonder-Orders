@@ -1,4 +1,4 @@
-<div class="wrap woonder-orders">
+<div class="wrap woonder-orders" id="pk-woonder-orders">
 	<h1 class="wp-heading-inline">Woonder Orders</h1>
 	<a href="<?php echo admin_url( "post-new.php?post_type=shop_order" ) ?>" class="page-title-action">
 		<?php echo __( 'Add Order', $plugin_name ); ?>
@@ -7,6 +7,7 @@
 		<?php echo __( 'Add Custom Status', $plugin_name ); ?>
 	</a>
 	<hr class="wp-header-end" />
+    <div class="foo">{{ foo }}</div>
 	<!-- woonder orders -->
 	<form action="">
 		<table class="wp-list-table widefat fixed striped posts">
@@ -42,7 +43,7 @@
 							<th>
 								<a
 									href="<?php echo admin_url("post.php?post={$order->get_id()}&action=edit" ) ?>">
-										
+
 									<strong>#<?php echo $order->get_id() ?></strong>
 								</a>
 							</th>

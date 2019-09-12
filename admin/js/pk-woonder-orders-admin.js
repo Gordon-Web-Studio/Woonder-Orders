@@ -5,7 +5,7 @@
     el: '#pk-woonder-orders',
 
     data: {
-
+      foo: 'bar'
     },
 
     computed: {
