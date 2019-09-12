@@ -7,7 +7,7 @@
  * @since      1.0.0
  *
  * @package    Pk_Woonder_Orders
- * @subpackage Pk_Woonder_Orders/admin
+ * @subpackage Pk_Woonder_Orders/includes
  */
 
 /**
@@ -17,11 +17,13 @@
  * the orders with vue.js
  *
  * @package    Pk_Woonder_Orders
- * @subpackage Pk_Woonder_Orders/admin
+ * @subpackage Pk_Woonder_Orders/includes
  * @author     David Gaitán <jdavid.gaitan@gmail.com>
  */
 
 class Pk_Woonder_Orders_Ajax extends Pk_Ajax_Legacy {
+
+    use Pk_Ajax_Logic;
 
 	/**
 	 * Init the Ajax
@@ -48,7 +50,9 @@ class Pk_Woonder_Orders_Ajax extends Pk_Ajax_Legacy {
 	 */
 	public function pk_get_orders() {
 
-		return $this->send_success( array( 'status' => 'ok' ) );
+        $orders = $this->get_orders();
+
+		return $this->send_success( $orders );
 	}
 
 	/**
