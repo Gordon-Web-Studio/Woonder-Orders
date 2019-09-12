@@ -124,6 +124,11 @@ class Pk_Woonder_Orders {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-pk-woonder-orders-admin-menu.php';
 
 		/**
+		 * The class responsible for defining the wp ajax actions.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-pk-woonder-orders-ajax.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
@@ -134,7 +139,15 @@ class Pk_Woonder_Orders {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'src/custom-status/class-pk-custom-status.php';
 
+		/**
+		 * Load the Woonder Orders Loader
+		 */
 		$this->loader = new Pk_Woonder_Orders_Loader();
+
+		/**
+		 * Load the Woonder Orders Ajax Actions
+		 */
+		new Pk_Woonder_Orders_Ajax();
 
 	}
 
