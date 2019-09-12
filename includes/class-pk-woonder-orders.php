@@ -102,6 +102,11 @@ class Pk_Woonder_Orders {
 	private function load_dependencies() {
 
 		/**
+		 * Load abstract classes first
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/abstracts/abstract-pk-ajax-base.php';
+
+		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
