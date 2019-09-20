@@ -79,7 +79,6 @@ class Pk_Woonder_Orders {
 		$this->set_locale();
 		$this->define_admin_navs();
 		$this->define_admin_hooks();
-		$this->define_public_hooks();
 
 	}
 
@@ -139,12 +138,6 @@ class Pk_Woonder_Orders {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-pk-woonder-orders-ajax.php';
 
 		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-pk-woonder-orders-public.php';
-
-		/**
 		 * Here start to include the classes related with the logic of the plugin
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'src/custom-status/class-pk-custom-status.php';
@@ -196,22 +189,6 @@ class Pk_Woonder_Orders {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
-	}
-
-	/**
-	 * Register all of the hooks related to the public-facing functionality
-	 * of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function define_public_hooks() {
-
-		$plugin_public = new Pk_Woonder_Orders_Public( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
 	}
 
