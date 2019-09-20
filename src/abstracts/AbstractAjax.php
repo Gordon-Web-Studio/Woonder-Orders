@@ -1,54 +1,58 @@
 <?php
 
+namespace PoetKods\WoonderOrders\Abstracts;
+
 /**
- * Abstract Ajax Handler
+ * Abstract Ajax
  *
  * @link       https://github.com/dgaitan
  * @since      1.0.0
  *
- * @package    Pk_Woonder_Orders
- * @subpackage Pk_Woonder_Orders/includes/abstract
+ * @package    PoetKods/WoonderOrders
+ * @subpackage PoetKods/WoonderOrders/Abstracts
  */
+
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Absctract class to handle the main ajax logic.
  *
  * Here is defined the methods and actions
- * that contains all the logic related 
+ * that contains all the logic related
  * with the ajax actions
  *
- * @package    Pk_Woonder_Orders
- * @subpackage Pk_Woonder_Orders/includes/abstract
+ * @package    PoetKods/WoonderOrders
+ * @subpackage PoetKods/WoonderOrders/Abstracts
  * @author     David Gaitán <jdavid.gaitan@gmail.com>
  */
-abstract class Pk_Ajax_Legacy {
+abstract class AbstractAjax {
 
-	/**
-	 * The Ajax Hooks
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      array    $hooks    The ajax hooks/endpoints
-	 */
-	private $hooks = array();
+    /**
+     * The Ajax Hooks
+     *
+     * @since    1.0.0
+     * @access   private
+     * @var      array    $hooks    The ajax hooks/endpoints
+     */
+    private $hooks = array();
 
-	/**
-	 * Init the Ajax
-	 *
-	 * @since  1.0.0
-	 */
-	public function __construct( $hooks = array() ) {
+    /**
+     * Init the Ajax
+     *
+     * @since  1.0.0
+     */
+    public function __construct( $hooks = array() ) {
 
-		// Set the hooks
-		$this->hooks = $hooks;
+        // Set the hooks
+        $this->hooks = $hooks;
 
-		// Load the hooks
-		foreach ( $this->hooks as $hook ) {
-			$this->action( "wp_ajax_{$hook}", $hook );
-		}
-	}
+        // Load the hooks
+        foreach ( $this->hooks as $hook ) {
+            $this->action( "wp_ajax_{$hook}", $hook );
+        }
+    }
 
-	/**
+    /**
      * Hooks a function on to a specific action.
      *
      * @param     $tag

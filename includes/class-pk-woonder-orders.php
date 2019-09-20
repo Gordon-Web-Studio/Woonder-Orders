@@ -74,13 +74,42 @@ class Pk_Woonder_Orders {
 		}
 		$this->plugin_name = 'pk-woonder-orders';
 
+        $this->define_constants();
+        $this->register_custom_post_types();
 		$this->load_dependencies();
-		$this->load_custom_types();
 		$this->set_locale();
 		$this->define_admin_navs();
 		$this->define_admin_hooks();
 
 	}
+
+    /**
+     * Define constants
+     *
+     * @since  1.0.0
+     * @access private
+     * @return void
+     */
+    private function define_constants() {
+        define( 'PK_WOONDER_ORDERS_PATH', plugin_dir_path( dirname( __FILE__ ) ) );
+        define( 'PK_WOONDER_ORDERS_INCLUDES', PK_WOONDER_ORDERS_PATH . 'includes' );
+        define( 'PK_WOONDER_ORDERS_ADMIN', PK_WOONDER_ORDERS_PATH . 'admin' );
+        define( 'PK_WOONDER_ORDERS_SOURCE', PK_WOONDER_ORDERS_PATH . 'src' );
+        define( 'PK_WOONDER_ORDERS_VENDOR', PK_WOONDER_ORDERS_PATH . 'vendor' );
+    }
+
+    /**
+     * Load and define the custom post types
+     *
+     * @since  1.0.0
+     * @access private
+     * @return void
+     */
+    private function register_custom_post_types() {
+
+        require_once PK_WOONDER_ORDERS_INCLUDES . '/registers/custom-status.php';
+
+    }
 
 	/**
 	 * Load the required dependencies for this plugin.
@@ -99,58 +128,42 @@ class Pk_Woonder_Orders {
 	 * @access   private
 	 */
 	private function load_dependencies() {
-
-		/**
-		 * Load abstract classes first
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/abstracts/abstract-pk-ajax-base.php';
-
-		/**
-		 * Load Traits
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/traits/trait-pk-ajax.php';
+        /**
+         * Load PSR-4 Autoloader
+         */
+        require_once PK_WOONDER_ORDERS_VENDOR  . '/autoload.php';
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-pk-woonder-orders-loader.php';
+		require_once PK_WOONDER_ORDERS_INCLUDES . '/class-pk-woonder-orders-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-pk-woonder-orders-i18n.php';
+		require_once PK_WOONDER_ORDERS_INCLUDES . '/class-pk-woonder-orders-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-pk-woonder-orders-admin.php';
+		require_once PK_WOONDER_ORDERS_ADMIN . '/class-pk-woonder-orders-admin.php';
 
 		/**
 		 * The class responsible for defining the dashboard navigation items.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-pk-woonder-orders-admin-menu.php';
+		require_once PK_WOONDER_ORDERS_ADMIN . '/class-pk-woonder-orders-admin-menu.php';
 
-		/**
-		 * The class responsible for defining the wp ajax actions.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-pk-woonder-orders-ajax.php';
-
-		/**
-		 * Here start to include the classes related with the logic of the plugin
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'src/custom-status/class-pk-custom-status.php';
+        /**
+         * The class responsible of load all the backend actions.
+         */
+        require_once PK_WOONDER_ORDERS_SOURCE . '/WoonderOrders.php';
 
 		/**
 		 * Load the Woonder Orders Loader
 		 */
 		$this->loader = new Pk_Woonder_Orders_Loader();
-
-		/**
-		 * Load the Woonder Orders Ajax Actions
-		 */
-		new Pk_Woonder_Orders_Ajax();
 
 	}
 
@@ -169,11 +182,6 @@ class Pk_Woonder_Orders {
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
-	}
-
-	public function load_custom_types() {
-
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'src/custom-status/register.php';
 	}
 
 	/**

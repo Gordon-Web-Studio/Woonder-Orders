@@ -1,5 +1,7 @@
 <?php
 
+namespace PoetKods\WoonderOrders\Models;
+
 /**
  * This file create a Custom Status Class
  *
@@ -10,8 +12,8 @@
  * @link       https://github.com/dgaitan
  * @since      1.0.0
  *
- * @package    Pk_Woonder_Orders
- * @subpackage Pk_Woonder_Orders/includes
+ * @package    PoetKods/WoonderOrders
+ * @subpackage PoetKods/WoonderOrders/Models
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -23,10 +25,10 @@ defined( 'ABSPATH' ) || exit;
  * status of woocommerce.
  *
  * @since      1.0.0
- * @package    Pk_Woonder_Orders
- * @subpackage Pk_Woonder_Orders/includes
+ * @package    PoetKods/WoonderOrders
+ * @subpackage PoetKods/WoonderOrders/Models
  * @author     David Gaitán <jdavid.gaitan@gmail.com>
  */
-class Pk_Custom_Status {
+class CustomStatus {
 
 }
