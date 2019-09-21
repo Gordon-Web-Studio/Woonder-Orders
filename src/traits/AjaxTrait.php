@@ -14,6 +14,7 @@ namespace PoetKods\WoonderOrders\Traits;
 
 defined( 'ABSPATH' ) || exit;
 
+
 /**
  * The Woonder Orders Ajax functions.
  *

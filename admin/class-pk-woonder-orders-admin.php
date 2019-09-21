@@ -96,8 +96,8 @@ class Pk_Woonder_Orders_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( 'vue-js', 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js', array( 'jquery' ), $this->version, true );
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/pk-woonder-orders-admin.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_script( 'pk-vue-js', 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js' );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/pk-woonder-orders-admin.js', array( 'jquery' ), date('Ymdhs'), true );
 
 	}
 

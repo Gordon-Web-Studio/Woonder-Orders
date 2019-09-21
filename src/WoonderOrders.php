@@ -19,7 +19,6 @@ defined( 'ABSPATH' ) || exit;
 /**
  * This class Load the Woonder Orders Source
  *
- *
  * @since      1.0.0
  * @package    PoetKods/WoonderOrders
  * @subpackage PoetKods/WoonderOrders
@@ -27,19 +26,21 @@ defined( 'ABSPATH' ) || exit;
  */
 class WoonderOrders {
 
-    /**
-     * Constructor for the class
-     *
-     * Setup all the plugin
-     *
-     * @since  1.0.0
-     * @return  void
-     */
-    public function __construct() {
+	/**
+	 * Constructor for the class
+	 *
+	 * Setup all the plugin
+	 *
+	 * @since  1.0.0
+	 * @return  void
+	 */
+	public function __construct() {
 
-        // Load the Ajax Module
-        new Ajax();
-    }
+		/**
+		 * Load Ajax Callbacks
+		 */
+		new Ajax();
+	}
 }
 
 new WoonderOrders();
