@@ -2,6 +2,8 @@
 
 namespace PoetKods\WoonderOrders\Traits;
 
+use PoetKods\WoonderOrders\Models\Order;
+
 /**
  * The Woonder Orders Ajax functions
  *
@@ -44,7 +46,12 @@ trait AjaxTrait {
      * @return array $orders The Order List
      */
     private function get_orders() {
-        return array( 'orders' => [] );
+
+    	$args = array();
+
+    	$orders = Order::where( $args, $serialize = true );
+
+        return array( 'orders' => $orders );
     }
 
     /**
