@@ -39,6 +39,7 @@ class Ajax extends AbstractAjax {
 
         // Define the ajax actions hooks/endpoints
         $hooks = array(
+        	'pk_get_index_data',
             'pk_get_orders',
             'pk_get_order',
             'pk_create_order',
@@ -47,6 +48,23 @@ class Ajax extends AbstractAjax {
 
         // Load the hooks
         parent::__construct( $hooks );
+    }
+
+    /**
+     * This retrieve all the data from
+     * Woonder Orders Index Page in dash
+     *
+     * @since 1.0.0
+     * @return array $data - the initial data.
+     */
+    public function pk_get_index_data() {
+
+    	$data = $this->init_data();
+
+    	return $this->send_success(array(
+    		'message' => __('Data loaded successfully!', PK_PLUGIN_NAME),
+    		'init_data' => $data
+    	));
     }
 
     /**
@@ -59,7 +77,10 @@ class Ajax extends AbstractAjax {
 
         $orders = $this->get_orders();
 
-        return $this->send_success( $orders );
+        return $this->send_success( array(
+        	'message' => __('Order has been loaded successfully!', PK_PLUGIN_NAME),
+        	'orders' => $orders
+        ) );
     }
 
     /**

@@ -38,6 +38,13 @@ trait AjaxTrait {
 	 */
 	private function init_data() {
 
+		$data = array();
+		// Set the custom statuses
+		$data['customStatuses'] = $this->get_custom_statuses();
+		// Get orders
+		$data['orders'] = $this->get_orders();
+
+		return $data;
 	}
 
 	/**
@@ -52,7 +59,7 @@ trait AjaxTrait {
 
 		$orders = Order::where( $args, $serialize = true );
 
-		return array( 'orders' => $orders );
+		return $orders;
 	}
 
 	/**
