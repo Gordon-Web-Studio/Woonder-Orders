@@ -2,6 +2,8 @@
 
 namespace PoetKods\WoonderOrders\Models;
 
+use PoetKods\WoonderOrders\Abstracts\AbstractModel;
+
 /**
  * This file create a Custom Status Class
  *
@@ -29,6 +31,20 @@ defined( 'ABSPATH' ) || exit;
  * @subpackage PoetKods/WoonderOrders/Models
  * @author     David Gaitán <jdavid.gaitan@gmail.com>
  */
-class CustomStatus {
+class CustomStatus extends AbstractModel {
+
+	/**
+	 * The Construct of the model
+	 */
+	public function __construct() {
+
+		$fields = array( // Set the fields
+			'pk_custom_status_name',
+			'pk_custom_status_description',
+			'pk_custom_status_color'
+		);
+
+		parent::__construct( 'pk_custom_status', $fields );
+	}
 
 }

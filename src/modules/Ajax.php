@@ -40,7 +40,9 @@ class Ajax extends AbstractAjax {
         // Define the ajax actions hooks/endpoints
         $hooks = array(
             'pk_get_orders',
-            'pk_get_order'
+            'pk_get_order',
+            'pk_create_order',
+            'pk_get_custom_statuses'
         );
 
         // Load the hooks
@@ -70,5 +72,43 @@ class Ajax extends AbstractAjax {
     public function pk_get_order() {
 
         return $this->send_success( array( 'status' => 'ok' ) );
+    }
+
+    /**
+     * Create a custom order
+     *
+     * @since  1.0.0
+     * @param  $fields array The Custom Status Fields
+     * @return array $custom_status - The Custom Status Data
+     */
+    public function pk_create_order() {
+
+    	if ( isset( $_POST['fields'] ) ) {
+
+    		$custom_status = $this->create_order( $_POST['fields'] );
+
+    		return $this->send_success(array(
+    			'message' => __('The Custom Status has been created', PK_PLUGIN_NAME),
+    			'customStatus' => $custom_status
+    		));
+    	}
+
+    	return $this->send_error(array(
+    		'message' => __( 'The fields are required!', PK_PLUGIN_NAME )
+    	));
+    }
+
+    /**
+     * Retrieve custom status
+     *
+     * @return array $customStatuses - Return the custom statues
+     */
+    public function pk_get_custom_statuses() {
+
+    	$custom_statuses = $this->get_custom_statuses();
+    	return $this->send_success( array(
+    		'message' => __( 'The custom statuses has been returned successfully!'),
+    		'customStatuses' => $custom_statuses
+    	) );
     }
 }

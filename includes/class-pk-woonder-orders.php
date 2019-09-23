@@ -91,6 +91,7 @@ class Pk_Woonder_Orders {
      * @return void
      */
     private function define_constants() {
+    	define( 'PK_PLUGIN_NAME', $this->plugin_name );
         define( 'PK_WOONDER_ORDERS_PATH', plugin_dir_path( dirname( __FILE__ ) ) );
         define( 'PK_WOONDER_ORDERS_INCLUDES', PK_WOONDER_ORDERS_PATH . 'includes' );
         define( 'PK_WOONDER_ORDERS_ADMIN', PK_WOONDER_ORDERS_PATH . 'admin' );

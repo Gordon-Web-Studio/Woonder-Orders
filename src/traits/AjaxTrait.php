@@ -3,6 +3,7 @@
 namespace PoetKods\WoonderOrders\Traits;
 
 use PoetKods\WoonderOrders\Models\Order;
+use PoetKods\WoonderOrders\Models\CustomStatus;
 
 /**
  * The Woonder Orders Ajax Traits
@@ -61,6 +62,28 @@ trait AjaxTrait {
 	 * @return array $order The Order Single Object
 	 */
 	private function get_order() {
+
+	}
+
+	/**
+	 * Create a Custom Status
+	 *
+	 * @param  array $fields - The Custom Status fields to save
+	 * @return array $custom_status - The Custom Status saved!
+	 */
+	private function create_order( $fields ) {
+		$custom_status = new CustomStatus();
+		$custom_status = $custom_status->create( $fields );
+		return $custom_status;
+	}
+
+	private function get_custom_statuses() {
+		$custom_statuses = new CustomStatus();
+		$custom_statuses = $custom_statuses->where( array(
+			'posts_per_page' => -1
+		) );
+
+		return $custom_statuses;
 
 	}
 }

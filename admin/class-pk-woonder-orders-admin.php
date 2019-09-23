@@ -123,6 +123,8 @@ class Pk_Woonder_Orders_Admin {
 		 * class.
 		 */
 
+		wp_enqueue_style( 'wp-color-picker' );
+
 		wp_enqueue_script( 'pk-vue-js', 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js' );
 
 		wp_enqueue_script(
@@ -144,7 +146,7 @@ class Pk_Woonder_Orders_Admin {
 		wp_enqueue_script(
 			$this->plugin_name . '-admin',
 			plugin_dir_url( __FILE__ ) . 'js/pk-woonder-orders-admin.js',
-			array( 'jquery' ),
+			array( 'jquery', 'wp-color-picker' ),
 			date('Ymdhs'),
 			true
 		);

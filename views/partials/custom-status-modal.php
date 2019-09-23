@@ -34,14 +34,25 @@
         		</button>
       		</div>
       		<div class="modal-body">
-
+				<div class="form-group">
+			    	<label for="custom-status-name">Name</label>
+			    	<input v-model="customStatus.name" type="text" class="form-control" id="custom-status-name" aria-describedby="customStatusNameHelp" placeholder="ex:. Waiting a response.">
+			  	</div>
+			  	<div class="form-group">
+			    	<label for="custom-status-description">Description</label>
+			    	<textarea v-model="customStatus.description" id="custom-status-description" class="form-control" placeholder="ex:. Status to can handle the response status"></textarea>
+			  	</div>
+			  	<div class="form-group">
+					<input v-model="customStatus.color" id="custom-status-color" type="text" class="pk-color-field" value="#00AABB" class="form-control" data-default-color="#000000" />
+			  	</div>
       		</div>
       		<div class="modal-footer">
-		        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
-		        	<?php echo __( 'Cancel', $plugin_name ) ?>
+		        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" :disabled="isLoading">
+		        	{{ buttons.cancel }}
 		        </button>
-		        <button type="button" class="btn btn-primary btn-sm">
-		        	<?php echo __( 'Save', $plugin_name ) ?>
+		        <button type="button" class="btn btn-primary btn-sm" @click="saveCustomStatus" :disabled="isLoading">
+		        	<span v-if="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+					{{ buttons.save }}
 		        </button>
       		</div>
     	</div>
