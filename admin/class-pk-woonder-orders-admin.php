@@ -41,6 +41,15 @@ class Pk_Woonder_Orders_Admin {
 	private $version;
 
 	/**
+	 * Page Slugs
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      array    $page_slugs  The pages slugs to can load assets
+	 */
+	private $page_slugs;
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
@@ -51,6 +60,9 @@ class Pk_Woonder_Orders_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		$this->page_slugs = array(
+			'toplevel_page_woonder-orders'
+		);
 
 	}
 
@@ -60,6 +72,13 @@ class Pk_Woonder_Orders_Admin {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
+		/**
+		 * If isn't the woonder orders page
+		 * doesn't load the css file.
+		 */
+		if ( ! in_array( get_current_screen()->id, $this->page_slugs ) ) {
+			return;
+		}
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -73,7 +92,7 @@ class Pk_Woonder_Orders_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/pk-woonder-orders-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/styles.css', array(), date('Ymdhs'), 'all' );
 
 	}
 
@@ -83,6 +102,14 @@ class Pk_Woonder_Orders_Admin {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
+
+		/**
+		 * If isn't the woonder orders page
+		 * doesn't load the js file.
+		 */
+		if ( ! in_array( get_current_screen()->id, $this->page_slugs ) ) {
+			return;
+		}
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -97,6 +124,22 @@ class Pk_Woonder_Orders_Admin {
 		 */
 
 		wp_enqueue_script( 'pk-vue-js', 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js' );
+
+		wp_enqueue_script(
+			'pk-pooper',
+			'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js',
+			array( 'jquery' ),
+			date( 'Ymdhs' ),
+			true
+		);
+
+		wp_enqueue_script(
+			'pk-bootstrap-file',
+			'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js',
+			array( 'jquery' ),
+			date( 'Ymdhs' ),
+			true
+		);
 
 		wp_enqueue_script(
 			$this->plugin_name . '-admin',

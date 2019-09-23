@@ -18,7 +18,7 @@
 
     methods: {
     	openModal: function () {
-
+    		$('.pk-woonder-modals').modal('show');
     	}
     },
 

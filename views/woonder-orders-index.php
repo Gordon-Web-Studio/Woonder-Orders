@@ -1,9 +1,23 @@
+<?php
+
+/**
+ * Woonder Orders Index
+ *
+ * Index page to load the woonder orders
+ *
+ * @link       https://github.com/dgaitan
+ * @since      1.0.0
+ *
+ * @package    Pk_Woonder_Orders
+ * @subpackage Pk_Woonder_Orders/views
+ */
+?>
 <div class="wrap woonder-orders" id="pk-woonder-orders">
 	<h1 class="wp-heading-inline">Woonder Orders</h1>
 	<a href="<?php echo admin_url( "post-new.php?post_type=shop_order" ) ?>" class="page-title-action">
 		<?php echo __( 'Add Order', $plugin_name ); ?>
 	</a>
-	<a href="#" class="page-title-action" @click="openModal">
+	<a href="#" class="page-title-action" data-toggle="modal" data-target="#customStatusModal">
 		<?php echo __( 'Add Custom Status', $plugin_name ); ?>
 	</a>
 	<hr class="wp-header-end" />
