@@ -7,3 +7,33 @@
 	padding-left: 25px;
 	padding-right: 25px;
 }
+
+// cards
+.pk-card {
+	width: 100%;
+	min-width: 100% !important;
+	padding: 0 !important;
+	background-color: #FFFFFF;
+	border-radius: 3px;
+	box-shadow: 0 0 0 1px rgba(63,63,68,.05), 0 1px 3px 0 rgba(63,63,68,.15);
+
+	.card-status {
+		border-bottom: .1rem solid #dfe3e8;
+		display: flex;
+		margin: 0;
+		padding: 0;
+
+		.nav-link {
+			text-decoration: none;
+			padding: 10px 20px;
+		}
+	}
+
+	.card-body {
+		padding: 0 !important;
+	}
+
+	.card-element {
+		padding: 15px;
+	}
+}

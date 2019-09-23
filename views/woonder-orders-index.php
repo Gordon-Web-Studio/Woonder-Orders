@@ -22,59 +22,49 @@
 	</a>
 	<hr class="wp-header-end" />
 	<!-- woonder orders -->
-	<form action="">
-		<table class="wp-list-table widefat fixed striped posts">
-			<thead>
-				<tr>
-					<td class="manage-column column-cb check-column">
-						<input type="checkbox" id="pk-select-all" />
-					</td>
-					<td class="manage-column column-order_number column-primary sortable desc">
-						<a
-							href="<?php echo admin_url( 'admin.php?page=woonder-orders&order_by=ID&order=asc' ) ?>">
+	<div class="card pk-card">
+		<nav class="card-status">
+		  	<a
+		  		v-for="status in customStatuses"
+		  		class="nav-link"
+		  		href="#">
+				{{ status.pk_custom_status_name }}
+		  	</a>
+		</nav>
+		<div class="card-element">
+			<input type="search" placeholder="<?php echo __( 'Search...', $plugin_name ) ?>" class="form-control">
+		</div>
+		<div class="card-body">
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col">
 							<?php echo __( 'Order ID', $plugin_name ) ?>
-						</a>
-					</td>
-					<td class="manage-column column-customer">
-						<?php echo __( 'Customer', $plugin_name ) ?>
-					</td>
-					<td class="manage-column column-status">
-						<?php echo __( 'Status', $plugin_name ) ?>
-					</td>
-					<td class="manage-column column-total">
-						<?php echo __( 'Total', $plugin_name ) ?>
-					</td>
-				</tr>
-			</thead>
-			<tbody>
-				<?php if ( $orders ) : ?>
-					<?php foreach ( $orders as $order ) : ?>
-						<tr id="order-<?php echo $order->get_id() ?>">
-							<th scope="row" class="check-column">
-								<input type="checkbox" name="post[]" value="<?php echo $order->get_id() ?>">
-							</th>
-							<th>
-								<a
-									href="<?php echo admin_url("post.php?post={$order->get_id()}&action=edit" ) ?>">
-
-									<strong>#<?php echo $order->get_id() ?></strong>
-								</a>
-							</th>
-							<th>
-								<?php echo $order->get_user()->display_name ?>
-							</th>
-							<th>
-								<?php echo $order->get_status() ?>
-							</th>
-							<th>
-								<?php echo $order->get_total() ?>
-							</th>
-						</tr>
-					<?php endforeach; ?>
-				<?php endif; ?>
-			</tbody>
-		</table>
-	</form>
+						</th>
+						<th scope="col">
+							<?php echo __( 'Customer', $plugin_name ) ?>
+						</th>
+						<th scope="col">
+							<?php echo __( 'Status', $plugin_name ) ?>
+						</th>
+						<th scope="col">
+							<?php echo __( 'Total', $plugin_name ) ?>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="order in orders">
+						<th></th>
+						<th>{{ order.id }}</th>
+						<th>{{ order.customer_id }}</th>
+						<th>{{ order.status }}</th>
+						<th>{{ order.total }}</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 	<!-- /woonder orders -->
 
 	<?php require_once plugin_dir_path( dirname( __FILE__ ) ) . 'views/partials/custom-status-modal.php'; ?>

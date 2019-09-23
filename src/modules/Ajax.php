@@ -63,7 +63,7 @@ class Ajax extends AbstractAjax {
 
     	return $this->send_success(array(
     		'message' => __('Data loaded successfully!', PK_PLUGIN_NAME),
-    		'init_data' => $data
+    		'initData' => $data
     	));
     }
 
@@ -128,7 +128,7 @@ class Ajax extends AbstractAjax {
 
     	$custom_statuses = $this->get_custom_statuses();
     	return $this->send_success( array(
-    		'message' => __( 'The custom statuses has been returned successfully!'),
+    		'message' => __( 'The custom statuses has been returned successfully!', PK_PLUGIN_NAME ),
     		'customStatuses' => $custom_statuses
     	) );
     }

@@ -24,11 +24,26 @@
 
     },
 
-    created: {
-
+    created: function() {
+    	this.loadData();
     },
 
     methods: {
+    	loadData: function () {
+    		var self = this;
+
+    		$.ajax({
+    			url: '/wp-admin/admin-ajax.php',
+    			method: 'get',
+    			data: {
+    				action: 'pk_get_index_data',
+    			}
+    		}).done(function(response){
+    			self.customStatuses = response.data.initData.customStatuses;
+    			self.orders = response.data.initData.orders;
+    		});
+    	},
+
     	openModal: function () {
     		$('.pk-woonder-modals').modal('show');
     	},
