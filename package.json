@@ -1,0 +1,23 @@
+{
+  "name": "pk-woonder-orders",
+  "version": "1.0.0",
+  "description": "=== Plugin Name === Contributors: (this should be a list of wordpress.org userid's) Donate link: https://github.com/dgaitan Tags: comments, spam Requires at least: 3.0.1 Tested up to: 3.4 Stable tag: 4.3 License: GPLv2 or later License URI: http://www.gnu.org/licenses/gpl-2.0.html",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dgaitan/Woonder-Orders.git"
+  },
+  "author": "David Gaitan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dgaitan/Woonder-Orders/issues"
+  },
+  "homepage": "https://github.com/dgaitan/Woonder-Orders#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2"
+  }
+}

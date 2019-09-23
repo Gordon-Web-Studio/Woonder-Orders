@@ -3,11 +3,10 @@
 	<a href="<?php echo admin_url( "post-new.php?post_type=shop_order" ) ?>" class="page-title-action">
 		<?php echo __( 'Add Order', $plugin_name ); ?>
 	</a>
-	<a href="#" class="page-title-action">
+	<a href="#" class="page-title-action" @click="openModal">
 		<?php echo __( 'Add Custom Status', $plugin_name ); ?>
 	</a>
 	<hr class="wp-header-end" />
-    <div class="foo">{{ foo }}</div>
 	<!-- woonder orders -->
 	<form action="">
 		<table class="wp-list-table widefat fixed striped posts">
@@ -63,4 +62,7 @@
 		</table>
 	</form>
 	<!-- /woonder orders -->
+
+	<?php require_once plugin_dir_path( dirname( __FILE__ ) ) . 'views/partials/custom-status-modal.php'; ?>
+
 </div>

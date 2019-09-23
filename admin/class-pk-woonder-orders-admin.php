@@ -97,7 +97,26 @@ class Pk_Woonder_Orders_Admin {
 		 */
 
 		wp_enqueue_script( 'pk-vue-js', 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js' );
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/pk-woonder-orders-admin.js', array( 'jquery' ), date('Ymdhs'), true );
+
+		wp_enqueue_script(
+			$this->plugin_name . '-admin',
+			plugin_dir_url( __FILE__ ) . 'js/pk-woonder-orders-admin.js',
+			array( 'jquery' ),
+			date('Ymdhs'),
+			true
+		);
+
+		if ( 'toplevel_page_woonder-orders' === get_current_screen()->id ) {
+
+			wp_enqueue_script(
+				$this->plugin_name . '-handler',
+				plugin_dir_url( __FILE__ ) . 'js/pk-woonder-orders.js',
+				array( 'jquery' ),
+				date('Ymdhs'),
+				true
+			);
+
+		}
 
 	}
 

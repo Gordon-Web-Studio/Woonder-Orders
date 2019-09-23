@@ -4,6 +4,6 @@
 		<?php echo __( 'Add Custom Status', $plugin_name ); ?>
 	</a>
 	<hr class="wp-header-end" />
-    <div class="foo">{{ foo }}</div>
-	<!-- /woonder orders -->
+
+
 </div>
