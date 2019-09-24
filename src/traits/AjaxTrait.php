@@ -37,11 +37,8 @@ trait AjaxTrait {
 	 * @return array $data all the necessary data to show in index
 	 */
 	private function init_data() {
-
 		$data = array();
-		// Set the custom statuses
-		$data['customStatuses'] = $this->get_custom_statuses();
-		// Get orders
+		$data['statuses'] = $this->get_statuses();
 		$data['orders'] = $this->get_orders();
 
 		return $data;
@@ -54,9 +51,7 @@ trait AjaxTrait {
 	 * @return array $orders The Order List
 	 */
 	private function get_orders() {
-
 		$args = array();
-
 		$orders = Order::where( $args, $serialize = true );
 
 		return $orders;
@@ -78,10 +73,16 @@ trait AjaxTrait {
 	 * @param  array $fields - The Custom Status fields to save
 	 * @return array $custom_status - The Custom Status saved!
 	 */
-	private function create_order( $fields ) {
+	private function create_custom_status( $fields ) {
 		$custom_status = new CustomStatus();
-		$custom_status = $custom_status->create( $fields );
-		return $custom_status;
+		$status = $custom_status->create( $fields );
+		$custom_status->register_custom_status_to_woocommerce();
+		$status = array(
+			'id' => $status['post_name'],
+			'name' => $status['post_title']
+		);
+
+		return $status;
 	}
 
 	/**
@@ -96,12 +97,9 @@ trait AjaxTrait {
 		) );
 
 		return $custom_statuses;
-
 	}
 
 	private function get_statuses() {
-		$statuses = new CustomStatus();
-		$statuses = $statuses->get_all_statuses();
-		return $statuses;
+		return CustomStatus::get_statuses();
 	}
 }

@@ -78,6 +78,7 @@ abstract class AbstractModel {
 	 * @return object $object - The Object created.
 	 */
 	public function create( $fields = array() ) {
+		do_action( 'woonder_orders/model/before_create_a_record', $args );
 
 		$defaults = array(
 			'post_title' => $fields['name'],
@@ -86,10 +87,10 @@ abstract class AbstractModel {
 		);
 
 		$object_id = wp_insert_post( $defaults );
-
 		$this->add_custom_fields( $object_id, $fields );
-
 		$object = $this->get( $object_id );
+
+		do_action( 'woonder_orders/model/after_create_a_record', $object );
 
 		return $object;
 
@@ -104,9 +105,6 @@ abstract class AbstractModel {
 	public function get( $id ) {
 
 		try {
-			/**
-			 * Try return the post
-			 */
 			$object = get_post( $id );
 
 			if ( ! $object ) {
@@ -115,7 +113,6 @@ abstract class AbstractModel {
 
 			$object = $object->to_array();
 
-			// Set the custom fields to the object
 			foreach ( $this->fields as $field ) {
 				$object[$field] = get_post_meta( $id, $field, true );
 			}
@@ -167,6 +164,7 @@ abstract class AbstractModel {
 	 * @param array $fields - The Fields to save
 	 */
 	public function add_custom_fields( $id, $fields ) {
+		do_action( 'woonder_orders/model/before_add_custom_fields', $id, $fields );
 
 		foreach ( $fields as $field => $value ) {
 			update_post_meta(
@@ -175,6 +173,8 @@ abstract class AbstractModel {
 				$value
 			);
 		}
+
+		do_action( 'woonder_orders/model/after_add_custom_fields', $id, $fields );
 	}
 
 	/**
@@ -184,6 +184,7 @@ abstract class AbstractModel {
 	 * @return arrat $object - The data parsed to be returned
 	 */
 	private function prepare_data( $objects ) {
+		do_action( 'woonder_orders/model/before_prepare_data', $objects );
 
 		if ( $objects ) {
 			foreach ( $objects as $object ) {
@@ -199,6 +200,8 @@ abstract class AbstractModel {
 				$this->items[] = $item;
 			}
 		}
+
+		do_action( 'woonder_orders/model/after_prepare_data', $this->items );
 
 		return $this->items;
 	}

@@ -25,12 +25,12 @@
 	<div class="card pk-card">
 		<nav class="card-status">
 		  	<a
-		  		v-for="status in customStatuses"
+		  		v-for="status in statuses"
 		  		class="nav-link"
 		  		href="#"
-		  		v-bind:class="[currentStatus.ID === status.ID ? 'active' : '']"
+		  		v-bind:class="[currentStatus.id === status.id ? 'active' : '']"
 		  		@click="changeStatus(status)">
-				{{ status.pk_custom_status_name }}
+				{{ status.name }}
 		  	</a>
 		</nav>
 		<div class="card-element">

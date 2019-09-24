@@ -11,8 +11,10 @@
       	description: '',
       	color: ''
       },
-      customStatuses: [],
+      statuses: [],
       currentStatus: {},
+      // Orders stuffs
+      orders: [],
       // Behavior Stuffs
       isLoading: false,
       buttons: {
@@ -42,11 +44,11 @@
     				action: 'pk_get_index_data',
     			}
     		}).done(function(response){
-    			self.customStatuses = response.data.initData.customStatuses;
+    			self.statuses = response.data.initData.statuses;
     			self.orders = response.data.initData.orders;
 
-    			if ( self.customStatuses.length > 0 ) {
-    				self.currentStatus = self.customStatuses[0];
+    			if ( self.statuses.length > 0 ) {
+    				self.currentStatus = self.statuses[0];
     			}
     		});
     	},
@@ -64,13 +66,12 @@
     			url: '/wp-admin/admin-ajax.php',
     			method: 'post',
     			data: {
-    				action: 'pk_create_order',
+    				action: 'pk_create_custom_status',
     				fields: self.customStatus
     			}
     		}).done(function(response){
     			if (response.success) {
-    				debugger;
-    				self.customStatuses.push(response.data.customStatus);
+    				self.statuses.push(response.data.status);
     				self.buttons.save = 'Save';
     				self.isLoading = false;
     				$('#customStatusModal').modal('hide');

@@ -105,4 +105,18 @@ class CustomStatus extends AbstractModel {
 		return $statuses;
 	}
 
+	public static function get_statuses() {
+		$statuses = wc_get_order_statuses();
+		$data = array();
+
+		foreach ( $statuses as $key => $value ) {
+			$data[] = array(
+				'id' => $key,
+				'name' => $value
+			);
+		}
+
+		return $data;
+	}
+
 }

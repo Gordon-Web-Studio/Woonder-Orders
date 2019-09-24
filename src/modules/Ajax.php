@@ -43,7 +43,7 @@ class Ajax extends AbstractAjax {
         	'pk_get_index_data',
             'pk_get_orders',
             'pk_get_order',
-            'pk_create_order',
+            'pk_create_custom_status',
             'pk_get_custom_statuses',
             'pk_get_woocommerce_statuses',
             'pk_get_statuses'
@@ -102,14 +102,14 @@ class Ajax extends AbstractAjax {
      * @param  $fields array The Custom Status Fields
      * @return array $custom_status - The Custom Status Data
      */
-    public function pk_create_order() {
+    public function pk_create_custom_status() {
     	if ( isset( $_POST['fields'] ) ) {
 
-    		$custom_status = $this->create_order( $_POST['fields'] );
+    		$custom_status = $this->create_custom_status( $_POST['fields'] );
 
     		return $this->send_success(array(
     			'message' => __('The Custom Status has been created', PK_PLUGIN_NAME),
-    			'customStatus' => $custom_status
+    			'status' => $custom_status
     		));
     	}
 
@@ -146,7 +146,12 @@ class Ajax extends AbstractAjax {
     	));
     }
 
-    public function get_statuses() {
+    /**
+     * Get all statuses
+     *
+     * @return array $statuses
+     */
+    public function pk_get_statuses() {
     	$statuses = $this->get_statuses();
 
     	return $this->send_success(array(
