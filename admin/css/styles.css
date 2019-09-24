@@ -5487,6 +5487,10 @@ a.text-dark:hover, a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6; } }
 
+.woonder-orders .error,
+.woonder-orders .notice {
+  display: none !important; }
+
 .btn-sm {
   padding-left: 25px;
   padding-right: 25px; }
@@ -5505,7 +5509,23 @@ a.text-dark:hover, a.text-dark:focus {
     padding: 0; }
     .pk-card .card-status .nav-link {
       text-decoration: none;
-      padding: 10px 20px; }
+      padding: 10px 20px;
+      color: #212529;
+      outline: 0;
+      box-shadow: inherit !important;
+      position: relative; }
+      .pk-card .card-status .nav-link:after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: transparent;
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        transition: all .3s; }
+      .pk-card .card-status .nav-link.active:after, .pk-card .card-status .nav-link:hover:after {
+        background: #0073AA; }
   .pk-card .card-body {
     padding: 0 !important; }
   .pk-card .card-element {

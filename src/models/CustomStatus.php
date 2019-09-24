@@ -3,6 +3,7 @@
 namespace PoetKods\WoonderOrders\Models;
 
 use PoetKods\WoonderOrders\Abstracts\AbstractModel;
+use PoetKods\WoonderOrders\Traits\HookerTrait;
 
 /**
  * This file create a Custom Status Class
@@ -33,6 +34,8 @@ defined( 'ABSPATH' ) || exit;
  */
 class CustomStatus extends AbstractModel {
 
+	use HookerTrait;
+
 	/**
 	 * The Construct of the model
 	 */
@@ -45,6 +48,14 @@ class CustomStatus extends AbstractModel {
 		);
 
 		parent::__construct( 'pk_custom_status', $fields );
+	}
+
+	public function register_custom_statuses(  ) {
+
+	}
+
+	public function get_all_orders() {
+
 	}
 
 }

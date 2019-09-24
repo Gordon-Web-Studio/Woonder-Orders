@@ -5,13 +5,16 @@
     el: '#pk-woonder-orders',
 
     data: {
-      isLoading: false,
+    	// Status Stuffs
       customStatus: {
       	name: '',
       	description: '',
       	color: ''
       },
       customStatuses: [],
+      currentStatus: {},
+      // Behavior Stuffs
+      isLoading: false,
       buttons: {
       	save: 'Save',
       	edit: 'Edit',
@@ -41,6 +44,10 @@
     		}).done(function(response){
     			self.customStatuses = response.data.initData.customStatuses;
     			self.orders = response.data.initData.orders;
+
+    			if ( self.customStatuses.length > 0 ) {
+    				self.currentStatus = self.customStatuses[0];
+    			}
     		});
     	},
 
@@ -70,6 +77,10 @@
     			}
     		});
     	},
+
+    	changeStatus: function (status) {
+    		this.currentStatus = status;
+    	}
     },
 
     watch: {

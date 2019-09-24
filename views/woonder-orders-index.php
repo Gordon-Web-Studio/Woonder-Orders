@@ -27,12 +27,25 @@
 		  	<a
 		  		v-for="status in customStatuses"
 		  		class="nav-link"
-		  		href="#">
+		  		href="#"
+		  		v-bind:class="[currentStatus.ID === status.ID ? 'active' : '']"
+		  		@click="changeStatus(status)">
 				{{ status.pk_custom_status_name }}
 		  	</a>
 		</nav>
 		<div class="card-element">
-			<input type="search" placeholder="<?php echo __( 'Search...', $plugin_name ) ?>" class="form-control">
+			<div class="row">
+				<div class="col-12 col-md-3">
+					<div class="input-group">
+					  	<input type="search" class="form-control" placeholder="<?php echo __( 'Search...', $plugin_name ); ?>" aria-label="" aria-describedby="basic-addon1">
+					  	<div class="input-group-append input-group-sm">
+						    <button class="btn btn-primary" type="button">
+						    	<span class="dashicons dashicons-search"></span>
+						    </button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="card-body">
 			<table class="table">
@@ -56,10 +69,10 @@
 				<tbody>
 					<tr v-for="order in orders">
 						<th></th>
-						<th>{{ order.id }}</th>
-						<th>{{ order.customer_id }}</th>
-						<th>{{ order.status }}</th>
-						<th>{{ order.total }}</th>
+						<td>{{ order.id }}</td>
+						<td>{{ order.customer_id }}</td>
+						<td>{{ order.status }}</td>
+						<td>{{ order.total }}</td>
 					</tr>
 				</tbody>
 			</table>

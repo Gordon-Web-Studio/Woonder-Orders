@@ -5,5 +5,4 @@
 	</a>
 	<hr class="wp-header-end" />
 
-
 </div>

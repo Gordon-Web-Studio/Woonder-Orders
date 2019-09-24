@@ -84,6 +84,11 @@ trait AjaxTrait {
 		return $custom_status;
 	}
 
+	/**
+	 * Get the Custom Statuses
+	 *
+	 * @return array $custom_statuses - The Custom Statuses registered by the user
+	 */
 	private function get_custom_statuses() {
 		$custom_statuses = new CustomStatus();
 		$custom_statuses = $custom_statuses->where( array(
@@ -92,5 +97,11 @@ trait AjaxTrait {
 
 		return $custom_statuses;
 
+	}
+
+	private function get_statuses() {
+		$statuses = new CustomStatus();
+		$statuses = $statuses->get_all_statuses();
+		return $statuses;
 	}
 }

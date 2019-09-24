@@ -4,6 +4,7 @@ namespace PoetKods\WoonderOrders\Modules;
 
 use PoetKods\WoonderOrders\Abstracts\AbstractAjax;
 use PoetKods\WoonderOrders\Traits\AjaxTrait;
+use PoetKods\WoonderOrders\Traits\HookerTrait;
 
 /**
  * The Woonder Orders Ajax actions
@@ -28,6 +29,7 @@ defined( 'ABSPATH' ) || exit;
  */
 class Ajax extends AbstractAjax {
 
+    use HookerTrait;
     use AjaxTrait;
 
     /**
@@ -36,14 +38,15 @@ class Ajax extends AbstractAjax {
      * @since  1.0.0
      */
     public function __construct() {
-
         // Define the ajax actions hooks/endpoints
         $hooks = array(
         	'pk_get_index_data',
             'pk_get_orders',
             'pk_get_order',
             'pk_create_order',
-            'pk_get_custom_statuses'
+            'pk_get_custom_statuses',
+            'pk_get_woocommerce_statuses',
+            'pk_get_statuses'
         );
 
         // Load the hooks
@@ -58,7 +61,6 @@ class Ajax extends AbstractAjax {
      * @return array $data - the initial data.
      */
     public function pk_get_index_data() {
-
     	$data = $this->init_data();
 
     	return $this->send_success(array(
@@ -74,7 +76,6 @@ class Ajax extends AbstractAjax {
      * @return array $orders - The array with the orders
      */
     public function pk_get_orders() {
-
         $orders = $this->get_orders();
 
         return $this->send_success( array(
@@ -91,7 +92,6 @@ class Ajax extends AbstractAjax {
      * @return array $order - The Order Object
      */
     public function pk_get_order() {
-
         return $this->send_success( array( 'status' => 'ok' ) );
     }
 
@@ -103,7 +103,6 @@ class Ajax extends AbstractAjax {
      * @return array $custom_status - The Custom Status Data
      */
     public function pk_create_order() {
-
     	if ( isset( $_POST['fields'] ) ) {
 
     		$custom_status = $this->create_order( $_POST['fields'] );
@@ -125,11 +124,34 @@ class Ajax extends AbstractAjax {
      * @return array $customStatuses - Return the custom statues
      */
     public function pk_get_custom_statuses() {
-
     	$custom_statuses = $this->get_custom_statuses();
+
     	return $this->send_success( array(
     		'message' => __( 'The custom statuses has been returned successfully!', PK_PLUGIN_NAME ),
     		'customStatuses' => $custom_statuses
     	) );
+    }
+
+    /**
+     * Retrieve the WooCommerce Status
+     *
+     * @return array $woocommerce_statuses - Reeturn the Default Woocommerce Statuses
+     */
+    public function pk_get_woocommerce_statuses () {
+    	$woocommerce_status = wc_get_order_statuses();
+
+    	return $this->send_success(array(
+    		'message' => __('WooCommerce Status', PK_PLUGIN_NAME ),
+    		'statuses' => $woocommerce_status
+    	));
+    }
+
+    public function get_statuses() {
+    	$statuses = $this->get_statuses();
+
+    	return $this->send_success(array(
+    		'message' => __('Statuses has been retrieved successfully', PK_PLUGIN_NAME),
+    		'statuses' => $statuses
+    	));
     }
 }
