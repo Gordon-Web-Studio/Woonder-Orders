@@ -4,6 +4,7 @@ namespace PoetKods\WoonderOrders\Traits;
 
 use PoetKods\WoonderOrders\Models\Order;
 use PoetKods\WoonderOrders\Models\CustomStatus;
+use PoetKods\WoonderOrders\Models\Setting;
 
 /**
  * The Woonder Orders Ajax Traits
@@ -40,6 +41,7 @@ trait AjaxTrait {
 		$data = array();
 		$data['statuses'] = $this->get_statuses();
 		$data['orders'] = $this->get_orders();
+		$data['settings'] = $this->get_settings();
 
 		return $data;
 	}
@@ -99,7 +101,17 @@ trait AjaxTrait {
 		return $custom_statuses;
 	}
 
+	/**
+	 * Get all the status... Woo and Custom Status
+	 *
+	 * @return array $statuses
+	 */
 	private function get_statuses() {
 		return CustomStatus::get_statuses();
+	}
+
+	private function get_settings() {
+		$settings = new Setting();
+		return $settings->all();
 	}
 }

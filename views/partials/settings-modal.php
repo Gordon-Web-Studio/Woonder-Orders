@@ -34,7 +34,31 @@
         		</button>
       		</div>
       		<div class="modal-body">
-
+      			<div class="row">
+					<div class="col-12 col-md-4 mb-3" v-for="setting in settings">
+						<div v-if="setting.type === 'boolean'">
+							<div class="form-check" v-if="setting.type === 'boolean'">
+							  	<input class="form-check-input" type="checkbox" :value="setting.value" :id="setting.id" :checked="setting.value">
+							  	<label class="form-check-label" :for="setting.id">
+									{{ setting.label }}
+							  	</label>
+							</div>
+							<small class="help-text">{{ setting.help_text }}</small>
+						</div>
+						<div v-else-if="setting.type === 'single_select'">
+							<label :for="setting.id">{{ setting.label }}</label>
+							<select :id="setting.id" class="form-control">
+								<option
+									v-for="status in statuses"
+									:value="status.id"
+									:selected="status.id === setting.value.id">
+										{{ status.name }}
+								</option>
+							</select>
+							<small class="help-text">{{ setting.help_text }}</small>
+						</div>
+					</div>
+      			</div>
       		</div>
       		<div class="modal-footer">
 		        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" :disabled="isLoading">

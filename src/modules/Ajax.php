@@ -46,7 +46,8 @@ class Ajax extends AbstractAjax {
             'pk_create_custom_status',
             'pk_get_custom_statuses',
             'pk_get_woocommerce_statuses',
-            'pk_get_statuses'
+            'pk_get_statuses',
+            'pk_get_settings'
         );
 
         // Load the hooks
@@ -157,6 +158,15 @@ class Ajax extends AbstractAjax {
     	return $this->send_success(array(
     		'message' => __('Statuses has been retrieved successfully', PK_PLUGIN_NAME),
     		'statuses' => $statuses
+    	));
+    }
+
+    public function pk_get_settings() {
+    	$settings = $this->get_settings();
+
+    	return $this->send_success(array(
+    		'message' => __('Settings loaded successfully', PK_PLUGIN_NAME),
+    		'settings' => $settings
     	));
     }
 }

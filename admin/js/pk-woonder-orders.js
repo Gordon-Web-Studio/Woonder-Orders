@@ -16,7 +16,7 @@
       // Orders stuffs
       orders: [],
       // Settings Stuffs
-      settings: {},
+      settings: [],
       // Behavior Stuffs
       isLoading: false,
       buttons: {
@@ -48,6 +48,7 @@
     		}).done(function(response){
     			self.statuses = response.data.initData.statuses;
     			self.orders = response.data.initData.orders;
+    			self.settings = response.data.initData.settings;
 
     			if ( self.statuses.length > 0 ) {
     				self.currentStatus = self.statuses[0];
