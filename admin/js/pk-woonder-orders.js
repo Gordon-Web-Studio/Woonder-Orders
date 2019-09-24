@@ -15,6 +15,8 @@
       currentStatus: {},
       // Orders stuffs
       orders: [],
+      // Settings Stuffs
+      settings: {},
       // Behavior Stuffs
       isLoading: false,
       buttons: {
@@ -81,25 +83,21 @@
 
     	changeStatus: function (status) {
     		this.currentStatus = status;
+    	},
+
+    	saveSettings: function () {
+
     	}
     },
 
     watch: {
-    	customStatus: {
-    		deep: true,
-    		handler: function (val) {
-    			console.log(val);
-    		}
-    	}
+
     }
   });
 
 
   $(document).ready(function(){
-	  // $('#custom-status-color').on('input', function(){
-	  // 	debugger;
-	  // 	woonderOrders.customStatus.color = $(this).val();
-	  // });
+
   });
 
 })( jQuery );

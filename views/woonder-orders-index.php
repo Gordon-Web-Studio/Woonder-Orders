@@ -20,6 +20,9 @@
 	<a href="#" class="page-title-action" data-toggle="modal" data-target="#customStatusModal">
 		<?php echo __( 'Add Custom Status', $plugin_name ); ?>
 	</a>
+	<a href="#" class="page-title-action" data-toggle="modal" data-target="#settingsModal">
+		<?php echo __( 'Settings', $plugin_name ); ?>
+	</a>
 	<hr class="wp-header-end" />
 	<!-- woonder orders -->
 	<div class="card pk-card">
@@ -81,5 +84,6 @@
 	<!-- /woonder orders -->
 
 	<?php require_once plugin_dir_path( dirname( __FILE__ ) ) . 'views/partials/custom-status-modal.php'; ?>
+	<?php require_once plugin_dir_path( dirname( __FILE__ ) ) . 'views/partials/settings-modal.php'; ?>
 
 </div>
