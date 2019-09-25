@@ -71,8 +71,18 @@ class Order {
 
 		if ( $serialize ) {
 
-			foreach ( $orders->get_orders() as $order ) {
+			foreach ( $orders->get_orders() as $key => $order ) {
 				$data[] = $order->get_data();
+				$customer = $order->get_user();
+
+				if ( $customer ) {
+					$customer = array(
+						'display_name' => $customer->data->display_name,
+						'user_email' => $customer->data->user_email
+					);
+				}
+
+				$data[$key]['customer'] = $customer;
 			}
 
 		} else {

@@ -73,7 +73,15 @@
 					<tr v-for="order in orders">
 						<th></th>
 						<td v-if="settings.col_order_id.value">{{ order.id }}</td>
-						<td v-if="settings.col_customer.value">{{ order.customer_id }}</td>
+						<td v-if="settings.col_customer.value">
+							<div v-if="order.customer">
+								<span class="d-block"><strong>{{ order.customer.display_name }}</strong></span>
+								<em>{{ order.customer.user_email }}</em>
+							</div>
+							<div v-else>
+								<?php echo __( 'Guest', $plugin_name ); ?>
+							</div>
+						</td>
 						<td v-if="settings.col_status.value">
 							<div v-html="getStatusLabel(order.status)"></div>
 						</td>
