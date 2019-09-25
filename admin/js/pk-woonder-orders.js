@@ -87,8 +87,30 @@
     	},
 
     	saveSettings: function () {
+    		var settings = {};
 
-    	}
+    		$('.setting-field').each(function(){
+    			settings[$(this).attr('id')] = {
+    				value: $(this).val(),
+    				type: $(this).attr('data-type')
+    			};
+    		});
+
+    		console.log(settings);
+
+    		$.ajax({
+    			url: '/wp-admin/admin-ajax.php',
+    			method: 'post',
+    			data: {
+    				action: 'pk_update_settings',
+    				settings: settings
+    			}
+    		}).done(function(response){
+    			if (response.success) {
+    				self.settings = response.data.settings;
+    			}
+    		});
+    	},
     },
 
     watch: {

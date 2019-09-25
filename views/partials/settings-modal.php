@@ -38,7 +38,7 @@
 					<div class="col-12 col-md-4 mb-3" v-for="setting in settings">
 						<div v-if="setting.type === 'boolean'">
 							<div class="form-check" v-if="setting.type === 'boolean'">
-							  	<input class="form-check-input" type="checkbox" :value="setting.value" :id="setting.id" :checked="setting.value">
+							  	<input class="form-check-input setting-field" type="checkbox" :value="setting.value" :id="setting.id" :checked="setting.value" :data-type="setting.type">
 							  	<label class="form-check-label" :for="setting.id">
 									{{ setting.label }}
 							  	</label>
@@ -47,7 +47,7 @@
 						</div>
 						<div v-else-if="setting.type === 'single_select'">
 							<label :for="setting.id">{{ setting.label }}</label>
-							<select :id="setting.id" class="form-control">
+							<select :id="setting.id" class="form-control setting-field" :data-type="setting.type">
 								<option
 									v-for="status in statuses"
 									:value="status.id"

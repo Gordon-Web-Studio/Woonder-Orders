@@ -47,7 +47,8 @@ class Ajax extends AbstractAjax {
             'pk_get_custom_statuses',
             'pk_get_woocommerce_statuses',
             'pk_get_statuses',
-            'pk_get_settings'
+            'pk_get_settings',
+            'pk_update_settings'
         );
 
         // Load the hooks
@@ -161,6 +162,11 @@ class Ajax extends AbstractAjax {
     	));
     }
 
+    /**
+     * Get all settings
+     *
+     * @return array $settings
+     */
     public function pk_get_settings() {
     	$settings = $this->get_settings();
 
@@ -168,5 +174,20 @@ class Ajax extends AbstractAjax {
     		'message' => __('Settings loaded successfully', PK_PLUGIN_NAME),
     		'settings' => $settings
     	));
+    }
+
+    public function pk_update_settings() {
+    	if ( isset( $_POST['settings'] ) ) {
+    		$settings = $this->update_settings( $_POST['settings'] );
+
+    		return $this->send_success(array(
+    			'message' => __('Settings has been updated!', PK_PLUGIN_NAME),
+    			'settings' => $settings
+    		));
+    	}
+
+    	return $this->send_error( array(
+    		'message' => __('Settings are required!', PK_PLUGIN_NAME),
+    	) );
     }
 }

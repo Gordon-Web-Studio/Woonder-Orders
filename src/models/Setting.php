@@ -110,6 +110,11 @@ class Setting {
 		return $this->settings_stored;
 	}
 
+	public function update_settings( $settings ) {
+		update_option( $this->setting_slug, $settings );
+		return get_option( $this->setting_slug, false );
+	}
+
 	/**
 	 * Merge settings.
 	 *

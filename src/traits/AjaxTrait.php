@@ -110,8 +110,40 @@ trait AjaxTrait {
 		return CustomStatus::get_statuses();
 	}
 
+	/**
+	 * Retrieve Settings
+	 *
+	 * @return array $settings
+	 */
 	private function get_settings() {
 		$settings = new Setting();
 		return $settings->all();
+	}
+
+	/**
+	 * Update settings
+	 *
+	 * @param  array $settings
+	 * @return array
+	 */
+	private function update_settings( $fields ) {
+		$settings = new Setting();
+		$settings_to_update = $settings->all();
+
+		foreach ( $settings_to_update as $key => $value ) {
+			$settings_to_update[$key]['value'] = $this->prepare_setting_field( $fields[$value['id']] );
+		}
+
+		$settings = $settings->update_settings( $settings_to_update );
+		return $settings;
+	}
+
+	private function prepare_setting_field( $field ) {
+		if ( "boolean" === $field['type'] ) {
+			return "true" === $field['value'];
+		} else if ( "single_select" === $field['type'] ) {
+			$status = wc_get_order_statuses();
+			return $status[$field['value']];
+		}
 	}
 }
