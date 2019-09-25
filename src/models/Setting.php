@@ -48,7 +48,7 @@ class Setting {
 	 *
 	 * @var string
 	 */
-	public $version = '1.0.1';
+	public $version = '1.0.3';
 
 	/**
 	 * Default Settings
@@ -90,8 +90,6 @@ class Setting {
 			$this->settings_stored = $this->default_settings;
 			return;
 		}
-
-		return $this->settings_stored = $settings;
 
 
 		if ( $settings && $version === $this->version ) {
@@ -165,24 +163,101 @@ class Setting {
 			),
 			'col_order_id' => array(
 				'id'		=> 'col_order_id',
-				'label' 	=> __( 'Show Order id', PK_PLUGIN_NAME ),
+				'label' 	=> __( 'Show Order id Colun', PK_PLUGIN_NAME ),
 				'value'		=> true,
 				'type'		=> 'boolean',
 				'help_text' => __( 'Check if do you want to show the Order id in the orders table.', PK_PLUGIN_NAME )
 			),
 			'col_customer' => array(
 				'id'		=> 'col_customer',
-				'label'		=> __( 'Show Customer', PK_PLUGIN_NAME ),
+				'label'		=> __( 'Show Customer Column', PK_PLUGIN_NAME ),
 				'value' 	=> true,
 				'type'		=> 'boolean',
 				'help_text' => __( 'Check if do you want to show the Customer in the orders table', PK_PLUGIN_NAME )
 			),
 			'col_date' => array(
 				'id'		=> 'col_date',
-				'label'		=> __( 'Show Created Date', PK_PLUGIN_NAME ),
+				'label'		=> __( 'Show Created Date Column', PK_PLUGIN_NAME ),
 				'value' 	=> true,
 				'type'		=> 'boolean',
 				'help_text' => __( 'Check if do you want to show the order created date in the orders table', PK_PLUGIN_NAME )
+			),
+			'col_status' => array(
+				'id'		=> 'col_status',
+				'label'		=> __( 'Show Status Column', PK_PLUGIN_NAME ),
+				'value' 	=> true,
+				'type'		=> 'boolean',
+				'help_text' => __( 'Check if do you want to show the status in the orders table', PK_PLUGIN_NAME )
+			),
+			'col_total' => array(
+				'id'		=> 'col_total',
+				'label'		=> __( 'Show Total Column', PK_PLUGIN_NAME ),
+				'value' 	=> true,
+				'type'		=> 'boolean',
+				'help_text' => __( 'Check if do you want to show the total in the orders table', PK_PLUGIN_NAME )
+			),
+			'col_subtotal' => array(
+				'id'		=> 'col_subtotal',
+				'label'		=> __( 'Show Sub-Total Column', PK_PLUGIN_NAME ),
+				'value' 	=> true,
+				'type'		=> 'boolean',
+				'help_text' => __( 'Check if do you want to show the sub-total in the orders table', PK_PLUGIN_NAME )
+			),
+			'col_shipping_address' => array(
+				'id'		=> 'col_shipping_address',
+				'label'		=> __( 'Show Shipping Address Column', PK_PLUGIN_NAME ),
+				'value' 	=> true,
+				'type'		=> 'boolean',
+				'help_text' => __( 'Check if do you want to show the shipping address in the orders table', PK_PLUGIN_NAME )
+			),
+			'col_billing_address' => array(
+				'id'		=> 'col_billing_address',
+				'label'		=> __( 'Show Billing Address Column', PK_PLUGIN_NAME ),
+				'value' 	=> true,
+				'type'		=> 'boolean',
+				'help_text' => __( 'Check if do you want to show the billing address in the orders table', PK_PLUGIN_NAME )
+			),
+			'col_email' => array(
+				'id'		=> 'col_email',
+				'label'		=> __( 'Show Email Address Column', PK_PLUGIN_NAME ),
+				'value' 	=> true,
+				'type'		=> 'boolean',
+				'help_text' => __( 'Check if do you want to show the email address in the orders table', PK_PLUGIN_NAME )
+			),
+			'col_shipping_method' => array(
+				'id'		=> 'col_shipping_method',
+				'label'		=> __( 'Show Shipping Method Column', PK_PLUGIN_NAME ),
+				'value' 	=> true,
+				'type'		=> 'boolean',
+				'help_text' => __( 'Check if do you want to show the shipping method in the orders table', PK_PLUGIN_NAME )
+			),
+			'col_phone' => array(
+				'id'		=> 'col_phone',
+				'label'		=> __( 'Show Phone Column', PK_PLUGIN_NAME ),
+				'value' 	=> true,
+				'type'		=> 'boolean',
+				'help_text' => __( 'Check if do you want to show the phone in the orders table', PK_PLUGIN_NAME )
+			),
+			'col_product_items' => array(
+				'id'		=> 'col_product_items',
+				'label'		=> __( 'Show Product Items Column', PK_PLUGIN_NAME ),
+				'value' 	=> true,
+				'type'		=> 'boolean',
+				'help_text' => __( 'Check if do you want to show the products related with the order in the orders table', PK_PLUGIN_NAME )
+			),
+			'col_order_notes' => array(
+				'id'		=> 'col_order_notes',
+				'label'		=> __( 'Show Order Notes Column', PK_PLUGIN_NAME ),
+				'value' 	=> true,
+				'type'		=> 'boolean',
+				'help_text' => __( 'Check if do you want to show the orders in the orders table', PK_PLUGIN_NAME )
+			),
+			'col_private_notes' => array(
+				'id'		=> 'col_private_notes',
+				'label'		=> __( 'Show Private Notes Column', PK_PLUGIN_NAME ),
+				'value' 	=> true,
+				'type'		=> 'boolean',
+				'help_text' => __( 'Check if do you want to show the private notes in the orders table', PK_PLUGIN_NAME )
 			)
 		);
 	}

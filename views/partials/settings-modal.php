@@ -35,7 +35,7 @@
       		</div>
       		<div class="modal-body">
       			<div class="row">
-					<div class="col-12 col-md-4 mb-3" v-for="setting in settings">
+					<div class="col-12 col-md-4 mb-5" v-for="setting in settings">
 
 						<div v-if="setting.type === 'boolean'">
 							<div class="form-check" v-if="setting.type === 'boolean'">
