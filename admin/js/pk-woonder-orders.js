@@ -37,6 +37,11 @@
     },
 
     methods: {
+    	/**
+    	 * Load initial data
+    	 *
+    	 * @return {void}
+    	 */
     	loadData: function () {
     		var self = this;
 
@@ -54,10 +59,20 @@
     		});
     	},
 
+    	/**
+    	 * Open a Modal
+    	 *
+    	 * @return {void}
+    	 */
     	openModal: function () {
     		$('.pk-woonder-modals').modal('show');
     	},
 
+    	/**
+    	 * Save a new custom status
+    	 *
+    	 * @return {void} Just save the custom status and set it to data
+    	 */
     	saveCustomStatus: function () {
     		var self = this;
     		self.isLoading = true;
@@ -80,10 +95,23 @@
     		});
     	},
 
+    	/**
+    	 * Change the current status to can filter
+    	 * the orderes
+    	 *
+    	 * @param  {object} status
+    	 * @return {void} Just set the current status to data
+    	 */
     	changeStatus: function (status) {
     		this.currentStatus = status;
     	},
 
+    	/**
+    	 * Save the settings saved from
+    	 * the setting modal.
+    	 *
+    	 * @return {void}
+    	 */
     	saveSettings: function () {
   			var self = this;
     		self.isLoading = true;
@@ -107,6 +135,13 @@
     		});
     	},
 
+    	/**
+    	 * Set and validate the settings changed
+    	 * from setting form
+    	 *
+    	 * @param  {object} e - The event of the input/select/etc...
+    	 * @return {void} Just set the right value formated to the setting fired.
+    	 */
     	changeLocalSetting: function(e) {
     		if (e.target.dataset.type === 'boolean') {
     			this.settings[e.target.id].value = e.target.checked;
@@ -117,23 +152,24 @@
     		}
     	},
 
+    	/**
+    	 * Get the status label and return the html formated
+    	 *
+    	 * @param  {string} status_label - The Status name without prefix (ex: pending)
+    	 * @return {string} Return the HTML markup
+    	 */
     	getStatusLabel: function (status_label) {
     		var status = this.statuses.find(function(item){
     			return item.slug === status_label;
     		});
 
     		return "<mark class='badge' style='background-color:"+status.color+"'><span>"+status.name+"</span></mark>";
-    	}
+    	},
     },
 
     watch: {
 
     }
-  });
-
-
-  $(document).ready(function(){
-
   });
 
 })( jQuery );
