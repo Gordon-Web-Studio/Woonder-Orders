@@ -73,6 +73,9 @@
 						<th scope="col" v-if="settings.col_shipping_address.value">
 							<?php echo __( 'Shipping Address', $plugin_name ) ?>
 						</th>
+						<th scope="col" v-if="settings.col_product_items.value">
+							<?php echo __( 'Products', $plugin_name ) ?>
+						</th>
 						<th scope="col" v-if="settings.col_total.value">
 							<?php echo __( 'Total', $plugin_name ) ?>
 						</th>
@@ -106,6 +109,17 @@
 						</td>
 						<td v-if="settings.col_shipping_address.value">
 							<div v-html="getAddressFormat(order, 'shipping')"></div>
+						</td>
+						<td v-if="settings.col_product_items.value">
+							<ul>
+								<li :id="product.id" v-for="product in order.products">
+									<strong class="d-block">{{ product.name }}</strong>
+									<em class="d-block">
+										<strong><?php echo __('Total: ', $plugin_name) ?></strong>{{ order.currency }} {{ product.total }}
+									</em>
+									<hr>
+								</li>
+							</ul>
 						</td>
 						<td v-if="settings.col_total.value">
 							{{ order.currency }} {{ order.total }}

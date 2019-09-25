@@ -73,6 +73,7 @@ class Order {
 
 			foreach ( $orders->get_orders() as $key => $order ) {
 				$data[] = $order->get_data();
+				// Set the customer data
 				$customer = $order->get_user();
 
 				if ( $customer ) {
@@ -84,8 +85,25 @@ class Order {
 
 				$data[$key]['customer'] = $customer;
 				$data[$key]['detail_url'] = admin_url() . 'post.php?post=' . $order->get_id() . '&action=edit';
+
+				// Set the date formated
 				$date = new \DateTime($data[$key]['date_created']->date);
 				$data[$key]['date'] = $date->format('M j, Y');
+
+				// Set the items
+				$products = array();
+
+				foreach ( $order->get_items( 'line_item' ) as $product ) {
+					$p = $product->get_product();
+
+					$products[] = array(
+						'id' => $p->get_id(),
+						'name' => $p->get_name(),
+						'total' => $product->get_total()
+					);
+				}
+
+				$data[$key]['products'] = $products;
 			}
 
 		} else {
