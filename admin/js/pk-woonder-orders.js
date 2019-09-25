@@ -16,7 +16,7 @@
       // Orders stuffs
       orders: [],
       // Settings Stuffs
-      settings: {},
+      settings: null,
       // Behavior Stuffs
       isLoading: false,
       buttons: {

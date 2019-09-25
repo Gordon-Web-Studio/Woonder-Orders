@@ -51,20 +51,20 @@
 			</div>
 		</div>
 		<div class="card-body">
-			<table class="table">
+			<table class="table" v-if="settings">
 				<thead>
 					<tr>
 						<th scope="col"></th>
-						<th scope="col">
+						<th scope="col" v-if="settings.col_order_id.value">
 							<?php echo __( 'Order ID', $plugin_name ) ?>
 						</th>
-						<th scope="col">
+						<th scope="col" v-if="settings.col_customer.value">
 							<?php echo __( 'Customer', $plugin_name ) ?>
 						</th>
-						<th scope="col">
+						<th scope="col" v-if="settings.col_status.value">
 							<?php echo __( 'Status', $plugin_name ) ?>
 						</th>
-						<th scope="col">
+						<th scope="col" v-if="settings.col_total.value">
 							<?php echo __( 'Total', $plugin_name ) ?>
 						</th>
 					</tr>
@@ -72,10 +72,10 @@
 				<tbody>
 					<tr v-for="order in orders">
 						<th></th>
-						<td>{{ order.id }}</td>
-						<td>{{ order.customer_id }}</td>
-						<td>{{ order.status }}</td>
-						<td>{{ order.total }}</td>
+						<td v-if="settings.col_order_id.value">{{ order.id }}</td>
+						<td v-if="settings.col_customer.value">{{ order.customer_id }}</td>
+						<td v-if="settings.col_status.value">{{ order.status }}</td>
+						<td v-if="settings.col_total.value">{{ order.total }}</td>
 					</tr>
 				</tbody>
 			</table>
