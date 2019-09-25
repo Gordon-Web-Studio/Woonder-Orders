@@ -36,9 +36,10 @@
       		<div class="modal-body">
       			<div class="row">
 					<div class="col-12 col-md-4 mb-3" v-for="setting in settings">
+
 						<div v-if="setting.type === 'boolean'">
 							<div class="form-check" v-if="setting.type === 'boolean'">
-							  	<input class="form-check-input setting-field" type="checkbox" :value="setting.value" :id="setting.id" :checked="setting.value" :data-type="setting.type">
+							  	<input class="form-check-input setting-field" type="checkbox" :value="setting.value" :id="setting.id" :checked="setting.value" :data-type="setting.type" @change="changeLocalSetting">
 							  	<label class="form-check-label" :for="setting.id">
 									{{ setting.label }}
 							  	</label>
@@ -47,12 +48,12 @@
 						</div>
 						<div v-else-if="setting.type === 'single_select'">
 							<label :for="setting.id">{{ setting.label }}</label>
-							<select :id="setting.id" class="form-control setting-field" :data-type="setting.type">
+							<select :id="setting.id" class="form-control setting-field" :data-type="setting.type" @change="changeLocalSetting">
 								<option
-									v-for="status in statuses"
-									:value="status.id"
-									:selected="status.id === setting.value.id">
-										{{ status.name }}
+									v-for="(value, index) in setting.options"
+									:value="index"
+									:selected="index === setting.value.id">
+										{{ value }}
 								</option>
 							</select>
 							<small class="help-text">{{ setting.help_text }}</small>

@@ -16,7 +16,7 @@
       // Orders stuffs
       orders: [],
       // Settings Stuffs
-      settings: [],
+      settings: {},
       // Behavior Stuffs
       isLoading: false,
       buttons: {
@@ -87,34 +87,46 @@
     	},
 
     	saveSettings: function () {
-    		var settings = {};
-
-    		$('.setting-field').each(function(){
-    			settings[$(this).attr('id')] = {
-    				value: $(this).val(),
-    				type: $(this).attr('data-type')
-    			};
-    		});
-
-    		console.log(settings);
+  			var self = this;
+    		self.isLoading = true;
+    		self.buttons.save = 'Saving...';
 
     		$.ajax({
     			url: '/wp-admin/admin-ajax.php',
     			method: 'post',
     			data: {
     				action: 'pk_update_settings',
-    				settings: settings
+    				settings: self.settings
     			}
     		}).done(function(response){
     			if (response.success) {
     				self.settings = response.data.settings;
+    				self.isLoading = false;
+    				self.buttons.save = 'Save';
+    				$('#customStatusModal').modal('hide');
     			}
     		});
     	},
+
+    	changeLocalSetting: function(e) {
+    		if (e.target.dataset.type === 'boolean') {
+    			this.settings[e.target.id].value = e.target.checked;
+    		} else {
+    			this.settings[e.target.id].value = this.statuses.find(function(status){
+    				return status.id === e.target.value;
+    			});
+    		}
+
+    	}
     },
 
     watch: {
-
+    	settings: {
+    		deep: true,
+    		handler: function(val){
+    			console.log(val);
+    		}
+    	}
     }
   });
 

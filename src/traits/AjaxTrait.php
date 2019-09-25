@@ -130,8 +130,8 @@ trait AjaxTrait {
 		$settings = new Setting();
 		$settings_to_update = $settings->all();
 
-		foreach ( $settings_to_update as $key => $value ) {
-			$settings_to_update[$key]['value'] = $this->prepare_setting_field( $fields[$value['id']] );
+		foreach ( $fields as $key => $value ) {
+			$settings_to_update[$key]['value'] = $this->prepare_setting_field( $value );
 		}
 
 		$settings = $settings->update_settings( $settings_to_update );
@@ -141,9 +141,8 @@ trait AjaxTrait {
 	private function prepare_setting_field( $field ) {
 		if ( "boolean" === $field['type'] ) {
 			return "true" === $field['value'];
-		} else if ( "single_select" === $field['type'] ) {
-			$status = wc_get_order_statuses();
-			return $status[$field['value']];
 		}
+
+		return $field['value'];
 	}
 }

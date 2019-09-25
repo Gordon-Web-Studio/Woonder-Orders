@@ -40,7 +40,7 @@ class Setting {
 	 *
 	 * @var string
 	 */
-	public $setting_slug = 'pk_woonder_orders_settings';
+	public $setting_slug = 'pk_woonder_orders_settings_';
 
 	/**
 	 * The Setting Version.
@@ -91,11 +91,15 @@ class Setting {
 			return;
 		}
 
+		return $this->settings_stored = $settings;
+
+
 		if ( $settings && $version === $this->version ) {
 			$this->settings_stored = $settings;
 		} else {
 			$settings = is_array( $settings ) ? $this->merge_settings( $settings ) : $this->default_settings;
 			update_option( $this->setting_slug, $settings );
+			update_option( $this->version_slug, $this->version );
 			$this->settings_stored = get_option( $this->setting_slug, false );
 		}
 
@@ -110,6 +114,12 @@ class Setting {
 		return $this->settings_stored;
 	}
 
+	/**
+	 * Update Settings
+	 *
+	 * @param  array $settings - The Settings updated ready to save into db
+	 * @return array $settings - The settings updated.
+	 */
 	public function update_settings( $settings ) {
 		update_option( $this->setting_slug, $settings );
 		return get_option( $this->setting_slug, false );
@@ -127,16 +137,9 @@ class Setting {
 	 */
 	public function merge_settings( $settings ) {
 		$result = array();
-		$ids = array();
 
-		foreach ( $settings as $setting ) {
-			$ids[] = $setting['id'];
-		}
-
-		foreach ( $this->default_settings as $key => $value ) {
-			if ( in_array( $value['id'], $ids ) ) {
-				$this->default_settings[$key]['value'] = $value['value'];
-			}
+		foreach ( $settings as $key => $value ) {
+			$this->default_settings[$key]['value'] = $value['value'];
 		}
 
 		return $this->default_settings;
@@ -149,32 +152,32 @@ class Setting {
 	 */
 	public function load_default_settings() {
 		$this->default_settings = array(
-			array(
+			'default_status_filter' => array(
 				'id'		=> 'default_status_filter',
 				'label' 	=> __( 'Default Filter', PK_PLUGIN_NAME ),
 				'value' 	=> array(
-					'id' 	=> 0,
+					'id' 	=> '',
 					'name' 	=> ''
 				),
 				'type'		=> 'single_select',
-				'options'	=> array(),
+				'options'	=> wc_get_order_statuses(),
 				'help_text' => __( 'Select a default status to show in the order list', PK_PLUGIN_NAME ),
 			),
-			array(
+			'col_order_id' => array(
 				'id'		=> 'col_order_id',
 				'label' 	=> __( 'Show Order id', PK_PLUGIN_NAME ),
 				'value'		=> true,
 				'type'		=> 'boolean',
 				'help_text' => __( 'Check if do you want to show the Order id in the orders table.', PK_PLUGIN_NAME )
 			),
-			array(
+			'col_customer' => array(
 				'id'		=> 'col_customer',
 				'label'		=> __( 'Show Customer', PK_PLUGIN_NAME ),
 				'value' 	=> true,
 				'type'		=> 'boolean',
 				'help_text' => __( 'Check if do you want to show the Customer in the orders table', PK_PLUGIN_NAME )
 			),
-			array(
+			'col_date' => array(
 				'id'		=> 'col_date',
 				'label'		=> __( 'Show Created Date', PK_PLUGIN_NAME ),
 				'value' 	=> true,
