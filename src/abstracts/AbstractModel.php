@@ -141,6 +141,17 @@ abstract class AbstractModel {
 	}
 
 	/**
+	 * Get all Records without args
+	 *
+	 * @return array $objects
+	 */
+	public function all() {
+		return $this->where(array(
+			'posts_per_page' => -1
+		));
+	}
+
+	/**
 	 * Parse Args
 	 *
 	 * @param  array  $args the custom args

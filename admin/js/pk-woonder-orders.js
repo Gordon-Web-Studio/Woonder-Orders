@@ -9,7 +9,8 @@
       customStatus: {
       	name: '',
       	description: '',
-      	color: ''
+      	color: '',
+      	show: true
       },
       statuses: [],
       currentStatus: {},
@@ -114,17 +115,19 @@
     				return status.id === e.target.value;
     			});
     		}
+    	},
 
+    	getStatusLabel: function (status_label) {
+    		var status = this.statuses.find(function(item){
+    			return item.slug === status_label;
+    		});
+
+    		return "<mark class='badge' style='background-color:"+status.color+"'><span>"+status.name+"</span></mark>";
     	}
     },
 
     watch: {
-    	settings: {
-    		deep: true,
-    		handler: function(val){
-    			console.log(val);
-    		}
-    	}
+
     }
   });
 

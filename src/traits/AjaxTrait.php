@@ -82,7 +82,8 @@ trait AjaxTrait {
 		$custom_status->register_custom_status_to_woocommerce();
 		$status = array(
 			'id' => $status['post_name'],
-			'name' => $status['post_title']
+			'name' => $status['post_title'],
+			'color' => $status['']
 		);
 
 		return $status;
@@ -108,7 +109,8 @@ trait AjaxTrait {
 	 * @return array $statuses
 	 */
 	private function get_statuses() {
-		return CustomStatus::get_statuses();
+		$statuses = new CustomStatus();
+		return $statuses->get_statuses();
 	}
 
 	/**

@@ -74,7 +74,9 @@
 						<th></th>
 						<td v-if="settings.col_order_id.value">{{ order.id }}</td>
 						<td v-if="settings.col_customer.value">{{ order.customer_id }}</td>
-						<td v-if="settings.col_status.value">{{ order.status }}</td>
+						<td v-if="settings.col_status.value">
+							<div v-html="getStatusLabel(order.status)"></div>
+						</td>
 						<td v-if="settings.col_total.value">{{ order.total }}</td>
 					</tr>
 				</tbody>

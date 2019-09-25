@@ -44,7 +44,8 @@ class CustomStatus extends AbstractModel {
 		$fields = array( // Set the fields
 			'pk_custom_status_name',
 			'pk_custom_status_description',
-			'pk_custom_status_color'
+			'pk_custom_status_color',
+			'pk_custom_status_show'
 		);
 
 		parent::__construct( 'pk_custom_status', $fields );
@@ -105,14 +106,42 @@ class CustomStatus extends AbstractModel {
 		return $statuses;
 	}
 
-	public static function get_statuses() {
-		$statuses = wc_get_order_statuses();
-		$data = array();
+	public function get_statuses() {
+		$statuses = wc_get_order_statuses(); // WooCommerce Status
+		$custom_statuses = $this->all(); // Custom Status
+		$data = array(); // Status Merged
+
+		$woo_status_atts = array(
+			'wc-completed' => array( 'color' => '#c8d7e1' ),
+			'wc-on-hold' => array( 'color' => '#f8dda7' ),
+			'wc-processing' => array( 'color' => '#c6e1c6' ),
+			'wc-failed' => array( 'color' => '#eba3a3')
+		);
+
+		// Default WooCommerce Status
+		$default_statuses = array(
+	        'wc-pending',
+	        'wc-processing',
+	        'wc-on-hold',
+	        'wc-completed',
+	        'wc-cancelled',
+	        'wc-refunded',
+	        'wc-failed',
+	    );
+
+		foreach ( $custom_statuses as $value ) {
+			$status_name = 'wc-' . $value['post_name'];
+			$woo_status_atts[$status_name]['color'] = $value['pk_custom_status_color'];
+			$woo_status_atts[$status_name]['show'] = $value['pk_custom_status_show'];
+		}
 
 		foreach ( $statuses as $key => $value ) {
 			$data[] = array(
+				'slug' => explode('wc-', $key)[1],
 				'id' => $key,
-				'name' => $value
+				'name' => $value,
+				'color' => isset( $woo_status_atts[$key] ) ? $woo_status_atts[$key]['color'] : '#e5e5e5',
+				'show' => in_array( $key, $default_statuses ) ? true : $woo_status_atts[$key]['show'] === "true"
 			);
 		}
 

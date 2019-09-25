@@ -34,6 +34,10 @@
         		</button>
       		</div>
       		<div class="modal-body">
+			  	<div class="form-group">
+			  		<label for="custom-status-show">Status Enabled?</label>
+			  		<input v-model="customStatus.show" type="checkbox" id="custom-status-show" :checked="customStatus.show">
+			  	</div>
 				<div class="form-group">
 			    	<label for="custom-status-name">Name</label>
 			    	<input v-model="customStatus.name" type="text" class="form-control" id="custom-status-name" aria-describedby="customStatusNameHelp" placeholder="ex:. Waiting a response.">

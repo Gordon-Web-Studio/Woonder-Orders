@@ -176,6 +176,11 @@ class Ajax extends AbstractAjax {
     	));
     }
 
+    /**
+     * Update Settings
+     *
+     * @return array $settings Settings Updated
+     */
     public function pk_update_settings() {
     	if ( isset( $_POST['settings'] ) ) {
     		$settings = $this->update_settings( $_POST['settings'] );
