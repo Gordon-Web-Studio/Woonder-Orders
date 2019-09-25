@@ -165,6 +165,23 @@
 
     		return "<mark class='badge' style='background-color:"+status.color+"'><span>"+status.name+"</span></mark>";
     	},
+
+    	/**
+    	 * Get the format of an shipping address
+    	 *
+    	 * @param  {object} order The entire object
+    	 * @param  {string} address_type The Address type to format (shipping or address)
+    	 * @return {string} Return the HTML markup of the shipping address.
+    	 */
+    	getAddressFormat: function(order, address_type) {
+    		var a = address_type === 'shipping' ? order.shipping : order.billing;
+    		var address = "<strong class='d-block'>"+a.first_name+" "+a.last_name+"</strong>";
+    		address = address + "<span class='d-block'> "+a.address_1+"</span>";
+    		address = address + "<span class='d-block'>"+a.city+", "+a.state+", "+a.country+"</span>";
+    		address = address + "<span class='d-block'>"+a.postcode+"</span>";
+
+    		return a.first_name ? address : '';
+    	}
     },
 
     watch: {

@@ -61,8 +61,17 @@
 						<th scope="col" v-if="settings.col_customer.value">
 							<?php echo __( 'Customer', $plugin_name ) ?>
 						</th>
+						<th scope="col" v-if="settings.col_date.value">
+							<?php echo __( 'Date', $plugin_name ) ?>
+						</th>
 						<th scope="col" v-if="settings.col_status.value">
 							<?php echo __( 'Status', $plugin_name ) ?>
+						</th>
+						<th scope="col" v-if="settings.col_billing_address.value">
+							<?php echo __( 'Billing Address', $plugin_name ) ?>
+						</th>
+						<th scope="col" v-if="settings.col_shipping_address.value">
+							<?php echo __( 'Shipping Address', $plugin_name ) ?>
 						</th>
 						<th scope="col" v-if="settings.col_total.value">
 							<?php echo __( 'Total', $plugin_name ) ?>
@@ -72,7 +81,11 @@
 				<tbody>
 					<tr v-for="order in orders">
 						<th></th>
-						<td v-if="settings.col_order_id.value">{{ order.id }}</td>
+						<td v-if="settings.col_order_id.value">
+							<a :href="order.detail_url">
+								<strong>Order #{{ order.id }}</strong>
+							</a>
+						</td>
 						<td v-if="settings.col_customer.value">
 							<div v-if="order.customer">
 								<span class="d-block"><strong>{{ order.customer.display_name }}</strong></span>
@@ -82,10 +95,21 @@
 								<?php echo __( 'Guest', $plugin_name ); ?>
 							</div>
 						</td>
+						<td v-if="settings.col_date.value">
+							{{ order.date }}
+						</td>
 						<td v-if="settings.col_status.value">
 							<div v-html="getStatusLabel(order.status)"></div>
 						</td>
-						<td v-if="settings.col_total.value">{{ order.total }}</td>
+						<td v-if="settings.col_billing_address.value">
+							<div v-html="getAddressFormat(order, 'billing')"></div>
+						</td>
+						<td v-if="settings.col_shipping_address.value">
+							<div v-html="getAddressFormat(order, 'shipping')"></div>
+						</td>
+						<td v-if="settings.col_total.value">
+							{{ order.currency }} {{ order.total }}
+						</td>
 					</tr>
 				</tbody>
 			</table>

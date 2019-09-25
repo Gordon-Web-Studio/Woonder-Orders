@@ -83,6 +83,9 @@ class Order {
 				}
 
 				$data[$key]['customer'] = $customer;
+				$data[$key]['detail_url'] = admin_url() . 'post.php?post=' . $order->get_id() . '&action=edit';
+				$date = new \DateTime($data[$key]['date_created']->date);
+				$data[$key]['date'] = $date->format('M j, Y');
 			}
 
 		} else {

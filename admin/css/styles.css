@@ -5608,8 +5608,7 @@ a.text-dark:hover, a.text-dark:focus {
   min-width: 100% !important;
   padding: 0 !important;
   background-color: #FFFFFF;
-  border-radius: 3px;
-  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15); }
+  border-radius: 3px; }
   .pk-card .card-status {
     border-bottom: .1rem solid #dfe3e8;
     display: flex;
