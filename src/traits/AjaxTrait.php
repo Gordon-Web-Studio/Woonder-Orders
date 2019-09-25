@@ -42,6 +42,7 @@ trait AjaxTrait {
 		$data['statuses'] = $this->get_statuses();
 		$data['orders'] = $this->get_orders();
 		$data['settings'] = $this->get_settings();
+		$data['currentStatus'] = $data['settings']['default_status_filter']['value'];
 
 		return $data;
 	}

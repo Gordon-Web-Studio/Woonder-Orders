@@ -49,10 +49,7 @@
     			self.statuses = response.data.initData.statuses;
     			self.orders = response.data.initData.orders;
     			self.settings = response.data.initData.settings;
-
-    			if ( self.statuses.length > 0 ) {
-    				self.currentStatus = self.statuses[0];
-    			}
+    			self.currentStatus = response.data.initData.currentStatus;
     		});
     	},
 
@@ -101,9 +98,10 @@
     		}).done(function(response){
     			if (response.success) {
     				self.settings = response.data.settings;
+    				self.currentStatus = self.settings.default_status_filter.value;
     				self.isLoading = false;
     				self.buttons.save = 'Save';
-    				$('#customStatusModal').modal('hide');
+    				$('#settingsModal').modal('hide');
     			}
     		});
     	},
