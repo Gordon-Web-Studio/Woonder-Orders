@@ -128,4 +128,21 @@ class Order {
 		return $order;
 	}
 
+	/**
+	 * Count total Order stored
+	 *
+	 * @return integer $total_orders
+	 */
+	public static function count( $status = 'all' ) {
+		global $wpdb;
+
+		$sql = "SELECT COUNT(*) FROM $wpdb->posts WHERE 1=1 AND post_type='shop_order'";
+
+		if ( $status !== 'all' ) {
+			$sql = $sql . "AND post_status = {$status}";
+		}
+
+		return (int)$wpdb->get_var($sql);
+	}
+
 }

@@ -25,7 +25,9 @@
       	edit: 'Edit',
       	update: 'Update',
       	cancel: 'Cancel'
-      }
+      },
+      // Pagination stuffs
+      totalOrders: 0
     },
 
     computed: {
@@ -56,6 +58,7 @@
     			self.orders = response.data.initData.orders;
     			self.settings = response.data.initData.settings;
     			self.currentStatus = response.data.initData.currentStatus;
+    			self.totalOrders = response.data.initData.totalOrders;
     		});
     	},
 

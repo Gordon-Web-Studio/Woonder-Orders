@@ -129,6 +129,20 @@
 			</table>
 		</div>
 	</div>
+	<nav class="mt-3">
+		<ul class="pagination">
+			<li class="page-item">
+				<a href="#" class="page-link">
+					<?php echo __( 'Previous', $plugin_name ) ?>
+				</a>
+			</li>
+			<li class="page-item">
+				<a href="#" class="page-link">
+					<?php echo __( 'Next', $plugin_name ) ?>
+				</a>
+			</li>
+		</ul>
+	</nav>
 	<!-- /woonder orders -->
 
 	<?php require_once plugin_dir_path( dirname( __FILE__ ) ) . 'views/partials/custom-status-modal.php'; ?>

@@ -45,6 +45,7 @@ trait AjaxTrait {
 			'limit' => (int)$data['settings']['orders_per_page']['value']
 		));
 		$data['currentStatus'] = $data['settings']['default_status_filter']['value'];
+		$data['totalOrders'] = Order::count();
 
 		return $data;
 	}
