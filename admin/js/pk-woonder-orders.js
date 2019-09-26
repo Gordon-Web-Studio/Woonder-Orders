@@ -27,7 +27,8 @@
       	cancel: 'Cancel'
       },
       // Pagination stuffs
-      totalOrders: 0
+      totalOrders: 0,
+      currentPage: 1
     },
 
     computed: {
@@ -186,6 +187,10 @@
     		address = address + "<span class='d-block'>"+a.postcode+"</span>";
 
     		return a.first_name ? address : '';
+    	},
+
+    	paginate: function(action) {
+
     	}
     },
 
