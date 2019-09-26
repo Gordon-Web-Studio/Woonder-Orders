@@ -145,6 +145,8 @@
     	changeLocalSetting: function(e) {
     		if (e.target.dataset.type === 'boolean') {
     			this.settings[e.target.id].value = e.target.checked;
+    		} else if (e.target.dataset.type === 'numeric') {
+    			this.settings[e.target.id].value = parseInt(e.target.value);
     		} else {
     			this.settings[e.target.id].value = this.statuses.find(function(status){
     				return status.id === e.target.value;

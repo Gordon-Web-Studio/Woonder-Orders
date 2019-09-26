@@ -36,7 +36,6 @@
       		<div class="modal-body">
       			<div class="row">
 					<div class="col-12 col-md-4 mb-5" v-for="setting in settings">
-
 						<div v-if="setting.type === 'boolean'">
 							<div class="form-check" v-if="setting.type === 'boolean'">
 							  	<input class="form-check-input setting-field" type="checkbox" :value="setting.value" :id="setting.id" :checked="setting.value" :data-type="setting.type" @change="changeLocalSetting">
@@ -56,6 +55,11 @@
 										{{ value }}
 								</option>
 							</select>
+							<small class="help-text">{{ setting.help_text }}</small>
+						</div>
+						<div v-else-if="setting.type === 'numeric'">
+							<label :for="setting.id">{{ setting.label }}</label>
+							<input :id="setting.id" type="number" class="form-control setting-field" :data-type="setting.type" @change="changeLocalSetting" :value="setting.value" min="0">
 							<small class="help-text">{{ setting.help_text }}</small>
 						</div>
 					</div>

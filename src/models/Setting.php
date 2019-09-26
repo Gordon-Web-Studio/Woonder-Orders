@@ -48,7 +48,7 @@ class Setting {
 	 *
 	 * @var string
 	 */
-	public $version = '1.0.3';
+	public $version = '1.0.4';
 
 	/**
 	 * Default Settings
@@ -160,6 +160,13 @@ class Setting {
 				'type'		=> 'single_select',
 				'options'	=> wc_get_order_statuses(),
 				'help_text' => __( 'Select a default status to show in the order list', PK_PLUGIN_NAME ),
+			),
+			'orders_per_page' => array(
+				'id'		=> 'orders_per_page',
+				'label'		=> __( 'Orders Per Page', PK_PLUGIN_NAME ),
+				'value' 	=> 20,
+				'type'		=> 'numeric',
+				'help_text' => __( 'Define the orders items per page do you want to see.', PK_PLUGIN_NAME )
 			),
 			'col_order_id' => array(
 				'id'		=> 'col_order_id',

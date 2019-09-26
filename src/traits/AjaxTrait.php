@@ -40,8 +40,10 @@ trait AjaxTrait {
 	private function init_data() {
 		$data = array();
 		$data['statuses'] = $this->get_statuses();
-		$data['orders'] = $this->get_orders();
 		$data['settings'] = $this->get_settings();
+		$data['orders'] = $this->get_orders(array(
+			'limit' => (int)$data['settings']['orders_per_page']['value']
+		));
 		$data['currentStatus'] = $data['settings']['default_status_filter']['value'];
 
 		return $data;
@@ -51,10 +53,10 @@ trait AjaxTrait {
 	 * Get all WooCommerce Orders
 	 *
 	 * @since  1.0.0
+	 * @param  array $args
 	 * @return array $orders The Order List
 	 */
-	private function get_orders() {
-		$args = array();
+	private function get_orders( $args = array() ) {
 		$orders = Order::where( $args, $serialize = true );
 
 		return $orders;
