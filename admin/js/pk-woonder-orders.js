@@ -29,7 +29,8 @@
       // Pagination stuffs
       totalOrders: 0,
       maxNumPages: 0,
-      currentPage: 1
+      currentPage: 1,
+      paginateLoader: false
     },
 
     computed: {
@@ -191,8 +192,42 @@
     		return a.first_name ? address : '';
     	},
 
+    	/**
+    	 * Method to can paginate the order
+    	 *
+    	 * @since  1.0.0
+    	 * @param  {string} action Can be prev or next
+    	 * @return {void}
+    	 */
     	paginate: function(action) {
+    		var self = this;
+    		var page = self.currentPage;
+    		this.paginateLoader = true;
 
+    		switch (action) {
+    			case "next":
+    				page += 1; break;
+    			case "prev":
+    				page -= 1; break;
+    		}
+
+    		$.ajax({
+    			url: '/wp-admin/admin-ajax.php',
+    			method: 'post',
+    			data: {
+    				action: 'pk_get_orders',
+    				args: {
+    					paged: page,
+    					limit: self.settings.orders_per_page.value
+    				}
+    			}
+    		}).done(function(response){
+    			if (response.success) {
+    				self.currentPage = page;
+    				self.orders = response.data.items;
+    				self.paginateLoader = false;
+    			}
+    		});
     	}
     },
 

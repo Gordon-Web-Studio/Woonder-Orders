@@ -78,13 +78,14 @@ class Ajax extends AbstractAjax {
      * @return array $orders - The array with the orders
      */
     public function pk_get_orders() {
-    	$args = isset( $_GET['args'] ) ? $_GET['args'] : array();
+    	$args = isset( $_POST['args'] ) ? $_POST['args'] : array();
         $orders = $this->get_orders( $args );
 
-        return $this->send_success( array(
-        	'message' => __('Order has been loaded successfully!', PK_PLUGIN_NAME),
-        	'orders' => $orders
-        ) );
+        $data = array(
+        	'message' => __('Order has been loaded successfully!', PK_PLUGIN_NAME)
+        );
+
+        return $this->send_success( array_merge( $data, $orders) );
     }
 
     /**

@@ -46,11 +46,11 @@ class Order {
 	 */
 	public static function parse_args( $args = array() ) {
 		$default_args = array(
-			'limit' => 2,
+			'limit' => 20,
 			'orderby' => 'date',
 			'order' => 'DESC',
 			'paginate' => true,
-			'offset' => 1
+			'paged' => 1
 		);
 
 		$args = wp_parse_args( $args, $default_args );

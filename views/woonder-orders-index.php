@@ -129,19 +129,22 @@
 			</table>
 		</div>
 	</div>
-	<nav class="mt-3">
-		<ul class="pagination">
-			<li class="page-item">
-				<a href="#" class="page-link">
+	<nav class="mt-3 d-flex align-items-center">
+		<ul class="pagination mb-0">
+			<li class="page-item" :class="[currentPage > 1 ? '' : 'disabled']">
+				<a class="page-link" @click="paginate('prev')">
 					<?php echo __( 'Previous', $plugin_name ) ?>
 				</a>
 			</li>
-			<li class="page-item">
-				<a href="#" class="page-link">
+			<li class="page-item" :class="[currentPage < maxNumPages ? '' : 'disabled']">
+				<a class="page-link" @click="paginate('next')">
 					<?php echo __( 'Next', $plugin_name ) ?>
 				</a>
 			</li>
 		</ul>
+		<div class="spinner-border spinner-border-sm ml-3" role="status" v-if="paginateLoader">
+		  	<span class="sr-only">Loading...</span>
+		</div>
 	</nav>
 	<!-- /woonder orders -->
 
