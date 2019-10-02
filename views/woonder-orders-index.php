@@ -132,12 +132,12 @@
 	<nav class="mt-3 d-flex align-items-center">
 		<ul class="pagination mb-0">
 			<li class="page-item" :class="[currentPage > 1 ? '' : 'disabled']">
-				<a class="page-link" @click="paginate('prev')">
+				<a href="javascript:void(0)" class="page-link" @click="paginate('prev')">
 					<?php echo __( 'Previous', $plugin_name ) ?>
 				</a>
 			</li>
 			<li class="page-item" :class="[currentPage < maxNumPages ? '' : 'disabled']">
-				<a class="page-link" @click="paginate('next')">
+				<a href="javascript:void(0)" class="page-link" @click="paginate('next')">
 					<?php echo __( 'Next', $plugin_name ) ?>
 				</a>
 			</li>

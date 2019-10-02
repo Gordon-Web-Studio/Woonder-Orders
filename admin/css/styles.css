@@ -5651,3 +5651,10 @@ a.text-dark:hover, a.text-dark:focus {
 .badge {
   padding: 12px 15px;
   font-size: 11px; }
+
+.page-link {
+  cursor: pointer;
+  text-decoration: none; }
+
+.page-item.disabled .page-link {
+  background-color: #e8e8e8; }
