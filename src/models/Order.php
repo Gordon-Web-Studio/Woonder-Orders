@@ -1,6 +1,6 @@
 <?php
 
-namespace PoetKods\WoonderOrders\Models;
+namespace GWS\WoonderOrders\Models;
 
 /**
  * This file handle Order Class
@@ -10,8 +10,8 @@ namespace PoetKods\WoonderOrders\Models;
  * @link       https://github.com/dgaitan
  * @since      1.0.0
  *
- * @package    PoetKods/WoonderOrders
- * @subpackage PoetKods/WoonderOrders/Models
+ * @package    GWS/WoonderOrders
+ * @subpackage GWS/WoonderOrders/Models
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -22,8 +22,8 @@ defined( 'ABSPATH' ) || exit;
  * Local managemente of WooCommerce Orders
  *
  * @since      1.0.0
- * @package    PoetKods/WoonderOrders
- * @subpackage PoetKods/WoonderOrders/Models
+ * @package    GWS/WoonderOrders
+ * @subpackage GWS/WoonderOrders/Models
  * @author     David Gaitán <jdavid.gaitan@gmail.com>
  */
 class Order {

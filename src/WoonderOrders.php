@@ -1,9 +1,9 @@
 <?php
 
-namespace PoetKods\WoonderOrders;
+namespace GWS\WoonderOrders;
 
-use PoetKods\WoonderOrders\Modules\Ajax;
-use PoetKods\WoonderOrders\Models\CustomStatus;
+use GWS\WoonderOrders\Modules\Ajax;
+use GWS\WoonderOrders\Models\CustomStatus;
 
 /**
  * The Woonder Orders Initial Class
@@ -11,8 +11,8 @@ use PoetKods\WoonderOrders\Models\CustomStatus;
  * @link       https://github.com/dgaitan
  * @since      1.0.0
  *
- * @package    PoetKods/WoonderOrders
- * @subpackage PoetKods/WoonderOrders
+ * @package    GWS/WoonderOrders
+ * @subpackage GWS/WoonderOrders
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -21,8 +21,8 @@ defined( 'ABSPATH' ) || exit;
  * This class Load the Woonder Orders Source
  *
  * @since      1.0.0
- * @package    PoetKods/WoonderOrders
- * @subpackage PoetKods/WoonderOrders
+ * @package    GWS/WoonderOrders
+ * @subpackage GWS/WoonderOrders
  * @author     David Gaitán <jdavid.gaitan@gmail.com>
  */
 class WoonderOrders {

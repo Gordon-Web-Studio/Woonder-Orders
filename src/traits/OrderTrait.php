@@ -1,6 +1,6 @@
 <?php
 
-namespace PoetKods\WoonderOrders\Traits;
+namespace GWS\WoonderOrders\Traits;
 
 /**
  * The Woonder Orders Order Traits
@@ -8,8 +8,8 @@ namespace PoetKods\WoonderOrders\Traits;
  * @link       https://github.com/dgaitan
  * @since      1.0.0
  *
- * @package    PoetKods/WoonderOrders
- * @subpackage PoetKods/WoonderOrders/Traits
+ * @package    GWS/WoonderOrders
+ * @subpackage GWS/WoonderOrders/Traits
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -21,8 +21,8 @@ defined( 'ABSPATH' ) || exit;
  * Use this trait to can manage specific logic
  * about the order from WooCommerce
  *
- * @package    PoetKods/WoonderOrders
- * @subpackage PoetKods/WoonderOrders/Traits
+ * @package    GWS/WoonderOrders
+ * @subpackage GWS/WoonderOrders/Traits
  * @author     David Gaitán <jdavid.gaitan@gmail.com>
  */
 trait OrderTrait {

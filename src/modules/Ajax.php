@@ -1,10 +1,10 @@
 <?php
 
-namespace PoetKods\WoonderOrders\Modules;
+namespace GWS\WoonderOrders\Modules;
 
-use PoetKods\WoonderOrders\Abstracts\AbstractAjax;
-use PoetKods\WoonderOrders\Traits\AjaxTrait;
-use PoetKods\WoonderOrders\Traits\HookerTrait;
+use GWS\WoonderOrders\Abstracts\AbstractAjax;
+use GWS\WoonderOrders\Traits\AjaxTrait;
+use GWS\WoonderOrders\Traits\HookerTrait;
 
 /**
  * The Woonder Orders Ajax actions
@@ -12,8 +12,8 @@ use PoetKods\WoonderOrders\Traits\HookerTrait;
  * @link       https://github.com/dgaitan
  * @since      1.0.0
  *
- * @package    PoetKods/WoonderOrders
- * @subpackage PoetKods/WoonderOrders/Modules
+ * @package    GWS/WoonderOrders
+ * @subpackage GWS/WoonderOrders/Modules
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -23,8 +23,8 @@ defined( 'ABSPATH' ) || exit;
  *
  *
  * @since      1.0.0
- * @package    PoetKods/WoonderOrders
- * @subpackage PoetKods/WoonderOrders/Modules
+ * @package    GWS/WoonderOrders
+ * @subpackage GWS/WoonderOrders/Modules
  * @author     David Gaitán <jdavid.gaitan@gmail.com>
  */
 class Ajax extends AbstractAjax {

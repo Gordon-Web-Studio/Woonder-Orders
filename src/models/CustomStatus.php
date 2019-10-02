@@ -1,9 +1,9 @@
 <?php
 
-namespace PoetKods\WoonderOrders\Models;
+namespace GWS\WoonderOrders\Models;
 
-use PoetKods\WoonderOrders\Abstracts\AbstractModel;
-use PoetKods\WoonderOrders\Traits\HookerTrait;
+use GWS\WoonderOrders\Abstracts\AbstractModel;
+use GWS\WoonderOrders\Traits\HookerTrait;
 
 /**
  * This file create a Custom Status Class
@@ -15,8 +15,8 @@ use PoetKods\WoonderOrders\Traits\HookerTrait;
  * @link       https://github.com/dgaitan
  * @since      1.0.0
  *
- * @package    PoetKods/WoonderOrders
- * @subpackage PoetKods/WoonderOrders/Models
+ * @package    GWS/WoonderOrders
+ * @subpackage GWS/WoonderOrders/Models
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -28,8 +28,8 @@ defined( 'ABSPATH' ) || exit;
  * status of woocommerce.
  *
  * @since      1.0.0
- * @package    PoetKods/WoonderOrders
- * @subpackage PoetKods/WoonderOrders/Models
+ * @package    GWS/WoonderOrders
+ * @subpackage GWS/WoonderOrders/Models
  * @author     David Gaitán <jdavid.gaitan@gmail.com>
  */
 class CustomStatus extends AbstractModel {

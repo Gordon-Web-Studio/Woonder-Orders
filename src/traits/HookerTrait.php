@@ -1,6 +1,6 @@
 <?php
 
-namespace PoetKods\WoonderOrders\Traits;
+namespace GWS\WoonderOrders\Traits;
 
 /**
  * The Woonder Hooker Traits
@@ -8,8 +8,8 @@ namespace PoetKods\WoonderOrders\Traits;
  * @link       https://github.com/dgaitan
  * @since      1.0.0
  *
- * @package    PoetKods/WoonderOrders
- * @subpackage PoetKods/WoonderOrders/Traits
+ * @package    GWS/WoonderOrders
+ * @subpackage GWS/WoonderOrders/Traits
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -20,8 +20,8 @@ defined( 'ABSPATH' ) || exit;
  *
  * This Hooker contains the wordpress hookers
  *
- * @package    PoetKods/WoonderOrders
- * @subpackage PoetKods/WoonderOrders/Traits
+ * @package    GWS/WoonderOrders
+ * @subpackage GWS/WoonderOrders/Traits
  * @author     David Gaitán <jdavid.gaitan@gmail.com>
  */
 trait HookerTrait {

@@ -1,6 +1,6 @@
 <?php
 
-namespace PoetKods\WoonderOrders\Abstracts;
+namespace GWS\WoonderOrders\Abstracts;
 
 /**
  * Abstract Ajax
@@ -8,8 +8,8 @@ namespace PoetKods\WoonderOrders\Abstracts;
  * @link       https://github.com/dgaitan
  * @since      1.0.0
  *
- * @package    PoetKods/WoonderOrders
- * @subpackage PoetKods/WoonderOrders/Abstracts
+ * @package    GWS/WoonderOrders
+ * @subpackage GWS/WoonderOrders/Abstracts
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -21,8 +21,8 @@ defined( 'ABSPATH' ) || exit;
  * that contains all the logic related
  * with the ajax actions
  *
- * @package    PoetKods/WoonderOrders
- * @subpackage PoetKods/WoonderOrders/Abstracts
+ * @package    GWS/WoonderOrders
+ * @subpackage GWS/WoonderOrders/Abstracts
  * @author     David Gaitán <jdavid.gaitan@gmail.com>
  */
 abstract class AbstractAjax {

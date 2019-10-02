@@ -1,6 +1,6 @@
 <?php
 
-namespace PoetKods\WoonderOrders\Abstracts;
+namespace GWS\WoonderOrders\Abstracts;
 
 /**
  * Abstract Model
@@ -8,8 +8,8 @@ namespace PoetKods\WoonderOrders\Abstracts;
  * @link       https://github.com/dgaitan
  * @since      1.0.0
  *
- * @package    PoetKods/WoonderOrders
- * @subpackage PoetKods/WoonderOrders/Abstracts
+ * @package    GWS/WoonderOrders
+ * @subpackage GWS/WoonderOrders/Abstracts
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -20,8 +20,8 @@ defined( 'ABSPATH' ) || exit;
  * Save fields, Create fields, delete fields,
  * update stuffs, all related with model stuffs.
  *
- * @package    PoetKods/WoonderOrders
- * @subpackage PoetKods/WoonderOrders/Abstracts
+ * @package    GWS/WoonderOrders
+ * @subpackage GWS/WoonderOrders/Abstracts
  * @author     David Gaitán <jdavid.gaitan@gmail.com>
  */
 abstract class AbstractModel {

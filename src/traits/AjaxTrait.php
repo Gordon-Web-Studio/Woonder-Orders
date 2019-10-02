@@ -1,10 +1,10 @@
 <?php
 
-namespace PoetKods\WoonderOrders\Traits;
+namespace GWS\WoonderOrders\Traits;
 
-use PoetKods\WoonderOrders\Models\Order;
-use PoetKods\WoonderOrders\Models\CustomStatus;
-use PoetKods\WoonderOrders\Models\Setting;
+use GWS\WoonderOrders\Models\Order;
+use GWS\WoonderOrders\Models\CustomStatus;
+use GWS\WoonderOrders\Models\Setting;
 
 /**
  * The Woonder Orders Ajax Traits
@@ -12,8 +12,8 @@ use PoetKods\WoonderOrders\Models\Setting;
  * @link       https://github.com/dgaitan
  * @since      1.0.0
  *
- * @package    PoetKods/WoonderOrders
- * @subpackage PoetKods/WoonderOrders/Traits
+ * @package    GWS/WoonderOrders
+ * @subpackage GWS/WoonderOrders/Traits
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -25,8 +25,8 @@ defined( 'ABSPATH' ) || exit;
  * Use this trait to handle the logic of the
  * Main Ajax Class
  *
- * @package    PoetKods/WoonderOrders
- * @subpackage PoetKods/WoonderOrders/Traits
+ * @package    GWS/WoonderOrders
+ * @subpackage GWS/WoonderOrders/Traits
  * @author     David Gaitán <jdavid.gaitan@gmail.com>
  */
 trait AjaxTrait {
