@@ -41,11 +41,13 @@ trait AjaxTrait {
 		$data = array();
 		$data['statuses'] = $this->get_statuses();
 		$data['settings'] = $this->get_settings();
-		$data['orders'] = $this->get_orders(array(
+		$orders = $this->get_orders(array(
 			'limit' => (int)$data['settings']['orders_per_page']['value']
 		));
+		$data['orders'] = $orders['items'];
 		$data['currentStatus'] = $data['settings']['default_status_filter']['value'];
-		$data['totalOrders'] = Order::count();
+		$data['totalOrders'] = $orders['total'];
+		$data['maxNumPages'] = $orders['max_num_pages'];
 
 		return $data;
 	}

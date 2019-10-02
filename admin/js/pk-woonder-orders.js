@@ -28,6 +28,7 @@
       },
       // Pagination stuffs
       totalOrders: 0,
+      maxNumPages: 0,
       currentPage: 1
     },
 
@@ -59,7 +60,8 @@
     			self.orders = response.data.initData.orders;
     			self.settings = response.data.initData.settings;
     			self.currentStatus = response.data.initData.currentStatus;
-    			self.totalOrders = response.data.initData.totalOrders;
+    			self.totalOrders = parseInt(response.data.initData.totalOrders);
+    			self.maxNumPages = parseInt(response.data.initData.maxNumPages);
     		});
     	},
 

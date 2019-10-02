@@ -46,9 +46,11 @@ class Order {
 	 */
 	public static function parse_args( $args = array() ) {
 		$default_args = array(
-			'limit' => 20,
+			'limit' => 2,
 			'orderby' => 'date',
-			'order' => 'DESC'
+			'order' => 'DESC',
+			'paginate' => true,
+			'offset' => 1
 		);
 
 		$args = wp_parse_args( $args, $default_args );
@@ -66,13 +68,14 @@ class Order {
 	 */
 	public static function where( $args = array(), $serialize = true ) {
 
-		$orders = new \WC_Order_Query( self::parse_args( $args ) );
+		$orders = wc_get_orders( self::parse_args( $args ) );
 		$data = array();
 
 		if ( $serialize ) {
 
-			foreach ( $orders->get_orders() as $key => $order ) {
+			foreach ( $orders->orders as $key => $order ) {
 				$data[] = $order->get_data();
+
 				// Set the customer data
 				$customer = $order->get_user();
 
@@ -112,7 +115,11 @@ class Order {
 
 		}
 
-		return $data;
+		return array(
+			'items' => $data,
+			'total' => $orders->total,
+			'max_num_pages' => $orders->max_num_pages
+		);
 	}
 
 	/**
