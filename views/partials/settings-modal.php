@@ -40,7 +40,7 @@
 						  	{{ settings_error }}
 						  	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						    	<span aria-hidden="true">&times;</span>
-						  	</button>
+						  	</button>1
 						</div>
       				</div>
 					<div class="col-12 col-md-4 mb-5" v-for="setting in settings">
