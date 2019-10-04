@@ -129,7 +129,7 @@
 			</table>
 		</div>
 	</div>
-	<nav class="mt-3 d-flex align-items-center">
+	<nav class="mt-3 d-flex align-items-center" v-if="maxNumPages > 1">
 		<ul class="pagination mb-0">
 			<li class="page-item" :class="[currentPage > 1 ? '' : 'disabled']">
 				<a href="javascript:void(0)" class="page-link" @click="paginate('prev')">

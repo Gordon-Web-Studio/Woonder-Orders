@@ -18,6 +18,7 @@
       orders: [],
       // Settings Stuffs
       settings: null,
+      settings_error: '',
       // Behavior Stuffs
       isLoading: false,
       buttons: {
@@ -124,6 +125,14 @@
     		self.isLoading = true;
     		self.buttons.save = 'Saving...';
 
+    		// Previous validations before save the settings.
+    		if (parseInt(this.settings.orders_per_page.value) <= 0) {
+    			this.settings_error = 'The orders per page value needs to be greater than 0.';
+    			this.isLoading = false;
+    			this.buttons.save = 'Save';
+    			return;
+    		}
+
     		$.ajax({
     			url: '/wp-admin/admin-ajax.php',
     			method: 'post',
@@ -135,9 +144,9 @@
     			if (response.success) {
     				self.settings = response.data.settings;
     				self.currentStatus = self.settings.default_status_filter.value;
-    				self.isLoading = false;
-    				self.buttons.save = 'Save';
-    				$('#settingsModal').modal('hide');
+
+    				// To load all the new data, re-load the browser better
+    				window.location.reload();
     			}
     		});
     	},
